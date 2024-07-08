@@ -22,7 +22,7 @@ def hello_world():
 
 @app.route("/get_cleaned_data")
 def get_cleaned_data():
-    csv_file = '../MSFT.US.csv'
+    csv_file = './MSFT.US.csv'
     x_train_flat, x_test_flat, y_train_flat, y_test_flat, dates_train_str, dates_test_str = clean_data(csv_file)
     CLEANED_DATA.update({
         'x_train_flat': x_train_flat,
@@ -56,4 +56,4 @@ def train_model_redirect():
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host='0.0.0.0', port=5000)
