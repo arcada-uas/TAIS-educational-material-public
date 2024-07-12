@@ -1,23 +1,19 @@
-from flask import Flask, jsonify
+from flask import Flask
 import requests
 import sys
 import os
-from flask import redirect
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Calculate the path to the directory you want to import from
 parent_dir = os.path.join(current_dir, '../')
 sys.path.append(parent_dir)
-
 from data_service import clean_data
-
-CLEANED_DATA = {}
 
 app = Flask(__name__)
 
+CLEANED_DATA = {}
+
 @app.route("/")
-def hello_world():
+def welcome_message():
     return "<p>This is the data cleaning service!</p>"
 
 @app.route("/get_cleaned_data")

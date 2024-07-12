@@ -1,10 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from training_service import train_model
 import sys
 import os
 import pickle
 import base64
 import requests
+import json
 sys.path.append('../')
 
 variables = {}
@@ -26,21 +27,14 @@ def train_model_cf():
         data = request.json.get('cleaned_data')
         if data:
             x_train_flat = data['x_train_flat']
-            print("x_train_flat:" + str(x_train_flat))
             y_train_flat = data['y_train_flat']
-            #print("y_train_flat:" + str(y_train_flat))
+
             variables["y_test"] = data['y_test_flat']
-            #print("y_test_flat:" + str(data['y_test_flat']))
+            
             variables["dates_test"] = data['dates_test_str']
-            print("dates_test_str:" + str(data['dates_test_str']))
+        
             variables["x_test"] = data['x_test_flat']
-            print("training lengths of data:")
-            print("x len: " + str(len(x_train_flat)))
-            print("y len: " + str(len(y_train_flat)))
-            print("dates len: " + str(len(data['dates_test_str'])))
-
-
-
+            
             model = train_model(x_train_flat, y_train_flat)
 
             print("model: " + str(model))
@@ -59,7 +53,13 @@ def train_model_cf():
         else:
             return "No data provided", 400
     else:
-        return "<p>This is the training service, where the training happens!</p>"
+        # Convert the variables dictionary to a JSON string
+        variables_json = json.dumps(variables, indent=4)
+        # Embed the JSON string into the HTML response
+        return f"""
+            <p>This is the training service, where the training happens! Here are the contents of the variables variable currently:</p>
+            <pre>{variables_json}</pre>
+        """
 
         
 @app.route("/test_model")
