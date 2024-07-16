@@ -8,4 +8,5 @@
 
 3. Should we test the components individually before connecting?
     - how will i get the required parameters?
+    unit tests
 

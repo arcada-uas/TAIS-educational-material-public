@@ -10,8 +10,6 @@ from data_service import clean_data
 
 app = Flask(__name__)
 
-CLEANED_DATA = {}
-
 @app.route("/")
 def welcome_message():
     return "<p>This is the data cleaning service!</p>"
@@ -20,14 +18,7 @@ def welcome_message():
 def get_cleaned_data():
     csv_file = './MSFT.US.csv'
     x_train_flat, x_test_flat, y_train_flat, y_test_flat, dates_train_str, dates_test_str = clean_data(csv_file)
-    CLEANED_DATA.update({
-        'x_train_flat': x_train_flat,
-        'x_test_flat': x_test_flat,
-        'y_train_flat': y_train_flat,
-        'y_test_flat': y_test_flat,
-        'dates_train_str': dates_train_str,
-        'dates_test_str': dates_test_str
-    })
+
     return {
         'message': 'Data cleaned successfully!',
         'x_train': x_train_flat,
@@ -37,18 +28,6 @@ def get_cleaned_data():
         'dates_train': dates_train_str,
         'dates_test': dates_test_str
     }
-
-@app.route("/train_model")
-def train_model_redirect():
-    if CLEANED_DATA:
-        headers = {'Content-Type': 'application/json'}
-        data = {'cleaned_data': CLEANED_DATA}  # Assuming CLEANED_DATA is serializable to JSON
-        response = requests.post('http://127.0.0.1:5001/train_model', json=data, headers=headers)
-        return response.text
-    else:
-        return {
-            'message': 'Data is not cleaned yet. Please clean the data first!'
-        }
 
 
 if __name__ == '__main__':

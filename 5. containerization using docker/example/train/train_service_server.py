@@ -1,7 +1,7 @@
 import grpc
-from train import train_pb2_grpc
-from train import train_pb2
-from train.training_service import train_model
+import train_pb2_grpc
+import train_pb2
+from training_service import train_model
 import logging
 from concurrent import futures
 

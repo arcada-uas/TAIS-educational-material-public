@@ -7,7 +7,7 @@ from data import data_pb2
 
 def run():
     cleaned_data = None
-    with grpc.insecure_channel('localhost:50051') as channel:
+    with grpc.insecure_channel('localhost:8080') as channel:
         stub = data_pb2_grpc.DataServiceStub(channel)
         csv_file_path = './MSFT.US.csv'
         
