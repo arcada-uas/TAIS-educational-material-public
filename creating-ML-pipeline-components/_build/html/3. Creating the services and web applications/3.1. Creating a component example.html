@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Creating the services and testing &#8212; Learning to create ML pipeline components</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3. Creating the services and web applications/3.1. Creating a component example';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Learning to create ML pipeline components - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Learning to create ML pipeline components - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Building components for ML pipelines!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">1. Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/1.%20introduction%20to%20the%20project.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/2.%20Pipeline%20outline.html">Creating a Pipeline</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/3.%20general%20instructions%20for%20creating%20a%20component.html">Creating a component</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Beginning of creating a pipeline</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/2.1%20first%20steps%20to%20creating%20a%20pipeline.html">First steps of creatng a pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5. Containerization using Docker</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.%20containerization%20using%20docker/5.2%20containerizing%20our%20components.html">Containerizing our components</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/arcada-uas/TAIS-educational-material-public" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/arcada-uas/TAIS-educational-material-public/issues/new?title=Issue%20on%20page%20%2F3. Creating the services and web applications/3.1. Creating a component example.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/3. Creating the services and web applications/3.1. Creating a component example.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Creating the services and testing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-component">Data component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-data-component">Testing the data component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-component">Training component.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-training-component-and-communication-with-the-data-component">Testing the training component and communication with the data component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-testing-component">Model Testing component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-entire-pipeline">Testing the entire pipeline</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-the-services-and-testing">
+<h1>Creating the services and testing<a class="headerlink" href="#creating-the-services-and-testing" title="Link to this heading">#</a></h1>
+<p>Now that we have defined the pipeline we want to build, the components it consits of and the inputs and outputs of each of the components, we can start writing the services and some simple web applications for testing.</p>
+<p>We are going to be using Flask for creating the web applications for the microservices. Flask is a micro web framework written in Python. If you are not familiar with Flask or web frameworks, make sure to look through the documentation at <a class="reference external" href="https://flask.palletsprojects.com/en/3.0.x/">https://flask.palletsprojects.com/en/3.0.x/</a>.</p>
+<p>The web applications are mainly created as a way to test the individual components before moving on. Later the communication will happen through grpc instead of through the web applications, but as most people might be more familiar with web applications, we will first use them to test the services. If you feel comfortable with grpc and the service code, you can also move directly on to implementing the grpc code.</p>
+<section id="data-component">
+<h2>Data component<a class="headerlink" href="#data-component" title="Link to this heading">#</a></h2>
+<p>Let’s start by looking at the data collection and cleaning component, which in the future will be referred to as the data component. We know that the input should be some raw stock price data. We also have a base for the code that the service should consist of, as this is present in the stock_price_prediction notebook. Lastly we know that the output should be the cleaned data split into training and testing sets. Let’s first define the service, or function, that does the cleaning and the splitting:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">csv_file</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Previous_Close&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Previous_Close&#39;</span><span class="p">]]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span>
+    
+    <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dates_train</span><span class="p">,</span> <span class="n">dates_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dates</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Flatten the lists</span>
+    <span class="n">x_train_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">x_train</span><span class="o">.</span><span class="n">values</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+    <span class="n">x_test_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">x_test</span><span class="o">.</span><span class="n">values</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+    <span class="n">y_train_flat</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">y_test_flat</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">dates_train_str</span> <span class="o">=</span> <span class="n">dates_train</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">dates_test_str</span> <span class="o">=</span> <span class="n">dates_test</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">x_train_flat</span><span class="p">,</span> <span class="n">x_test_flat</span><span class="p">,</span> <span class="n">y_train_flat</span><span class="p">,</span> <span class="n">y_test_flat</span><span class="p">,</span> <span class="n">dates_train_str</span><span class="p">,</span> <span class="n">dates_test_str</span>
+</pre></div>
+</div>
+<p>Here we have decided that the function should take a csv file containing the input data. Next the function changes the format of the Date column, assumes the column close is the target variable and therefor creates a feature called Previous_Close which is the close value of the previous day. Next the function drops the first row of data as it will contain NaN values. The function then saves the previous close column values to a variable called x, as these are the values used to make predictions. It saves the Close column values to a variable called y as these are the values that will be predicted, and are thought to depend on x. Next the function splits the datasets into training and testing sets using the function train_test_split(), and lastly flattens the lists before returning them.</p>
+<p>Now that we have the basic service ready, we can implement the actual web application and it’s routes. As mentioned, this is done mainly for testing purposes and the application code will not be necessary later on, so if you feel comfortable with the service code and with using grpc, you can move directly on to the next chapter after reviewing all of the service code for the different component. However, if you want to test the services, then let’s start by importing the necessary dependencies,  defining the app using the Flask syntax and then for testing define the function for the main route to print a message saying “This is the data cleaning service!”:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">parent_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">data_service</span> <span class="kn">import</span> <span class="n">clean_data</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">welcome_message</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;p&gt;This is the data cleaning service!&lt;/p&gt;&quot;</span>
+
+<span class="c1">#Add other routes here</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want, you can test the application already at this point by saving the code to an <a class="reference external" href="http://app.py">app.py</a> file and running “python <a class="reference external" href="http://app.py">app.py</a>” in the folder where the code is saved. If you then visit the webaddress where the app is running, you should see the message.</p>
+<p>Next, let’s define a route for the actual data cleaning where we will call the function we wrote previously. The function should return the cleaned data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Add this between main route and the run command</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/get_cleaned_data&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_cleaned_data</span><span class="p">():</span>
+    <span class="n">csv_file</span> <span class="o">=</span> <span class="s1">&#39;./MSFT.US.csv&#39;</span>
+    <span class="n">x_train_flat</span><span class="p">,</span> <span class="n">x_test_flat</span><span class="p">,</span> <span class="n">y_train_flat</span><span class="p">,</span> <span class="n">y_test_flat</span><span class="p">,</span> <span class="n">dates_train_str</span><span class="p">,</span> <span class="n">dates_test_str</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;Data cleaned successfully!&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;x_train&#39;</span><span class="p">:</span> <span class="n">x_train_flat</span><span class="p">,</span>
+        <span class="s1">&#39;x_test&#39;</span><span class="p">:</span> <span class="n">x_test_flat</span><span class="p">,</span>
+        <span class="s1">&#39;y_train&#39;</span><span class="p">:</span> <span class="n">y_train_flat</span><span class="p">,</span>
+        <span class="s1">&#39;y_test&#39;</span><span class="p">:</span> <span class="n">y_test_flat</span><span class="p">,</span>
+        <span class="s1">&#39;dates_train&#39;</span><span class="p">:</span> <span class="n">dates_train_str</span><span class="p">,</span>
+        <span class="s1">&#39;dates_test&#39;</span><span class="p">:</span> <span class="n">dates_test_str</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-the-data-component">
+<h2>Testing the data component<a class="headerlink" href="#testing-the-data-component" title="Link to this heading">#</a></h2>
+<p>Now we would recommend you to test this function by running the app with the same command as previously in the folder containing the <a class="reference external" href="http://app.py">app.py</a> file:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>app.py
+</pre></div>
+</div>
+<p>Now as output you should see the following in the terminal:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>*<span class="w"> </span>Serving<span class="w"> </span>Flask<span class="w"> </span>app<span class="w"> </span><span class="s1">&#39;app&#39;</span>
+<span class="w"> </span>*<span class="w"> </span>Debug<span class="w"> </span>mode:<span class="w"> </span>off
+WARNING:<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>development<span class="w"> </span>server.<span class="w"> </span>Do<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </span>it<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>production<span class="w"> </span>deployment.<span class="w"> </span>Use<span class="w"> </span>a<span class="w"> </span>production<span class="w"> </span>WSGI<span class="w"> </span>server<span class="w"> </span>instead.
+<span class="w"> </span>*<span class="w"> </span>Running<span class="w"> </span>on<span class="w"> </span>all<span class="w"> </span>addresses<span class="w"> </span><span class="o">(</span><span class="m">0</span>.0.0.0<span class="o">)</span>
+<span class="w"> </span>*<span class="w"> </span>Running<span class="w"> </span>on<span class="w"> </span>http://127.0.0.1:5000
+<span class="w"> </span>*<span class="w"> </span>Running<span class="w"> </span>on<span class="w"> </span>http://192.168.0.101:5000
+Press<span class="w"> </span>CTRL+C<span class="w"> </span>to<span class="w"> </span>quit
+</pre></div>
+</div>
+<p>Go ahead and open the web address where the app is running. You should see something like this:
+<img alt="image.png" src="3. Creating the services and web applications/attachment:image.png" /></p>
+<p>Now if you change the route to the /get_cleaned_data route you should see the following:
+<img alt="image-2.png" src="3. Creating the services and web applications/attachment:image-2.png" /></p>
+<p>The output displayed is the cleaned data returned by the service. It is quite a long list, but if you scroll down you can see that it contains all the necessary data, that is train_dates, train_x, train_y, test_dates, test_x and test_y. The testing can also be done using postman. To use postman, enter the web address of the data application into the URL field, and speicify the request method to be get. If you then press send you should see the returned text:</p>
+<p><img alt="image-3.png" src="3. Creating the services and web applications/attachment:image-3.png" /></p>
+<p>If you then again add /get_cleaned_data to the end of the address you should see the cleaned data returned.</p>
+<p><img alt="image-4.png" src="3. Creating the services and web applications/attachment:image-4.png" /></p>
+<p>We have now confirmed that the service works as expected. For further debugging and testing you can also use print statements.</p>
+<p>Now we have defined the necessary functions for the data component. We still need to somehow send the cleaned data forward to the next service. We will come back to this after creating the training component. For now, we will test the code we have written so far, and then move on to the next component.</p>
+</section>
+<section id="training-component">
+<h2>Training component.<a class="headerlink" href="#training-component" title="Link to this heading">#</a></h2>
+<p>Now let’s repeat the same steps for the training component.</p>
+<ol class="arabic simple">
+<li><p>Define the service</p></li>
+<li><p>Create the app and the main directory</p></li>
+<li><p>Define the directory that calls the service function</p></li>
+<li><p>test the application</p></li>
+</ol>
+<p>So first let’s define the service. We know it should receive the cleaned data and train a linear regression model before returning the trained model. We have to take into consideration that the x_train list was flattened in the data component (This was done to simplify future steps once we implement grpc), but we need it to be 2D, so a list containing lists. To achieve this we need to include the following line:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Besides this addition, we can use the same code as in the stock_price_prediction notebook. Here is the train_model function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="c1">#make x_train 2D</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+<p>Now we need to create the app and define the main route. We follow the same structure as for the data component and get the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">training_service</span> <span class="kn">import</span> <span class="n">train_model</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">welcome_message</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;p&gt;This is the training service!&lt;/p&gt;&quot;</span>
+
+
+<span class="c1">#Add other routes here</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5001</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Again, you can test the app already at this point to make sure that you can run it properly.</p>
+<p>Now we need to define the route from which the service function will be called. Since we need to send the trained model to the next component, we have converted it into binary before returning it.</p>
+<p>We need to consider how we’re going to get the cleaned data from the data component. In order to get the cleaned data, we will simply make a request to the data component, to the get_cleaned_data route, which will directly return all the cleaned data. We don’t need to change anthing about the data component code as it already has all necessary functions for us to utilize it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add this between the main route and the run command </span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/train_model&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">train_model_cf</span><span class="p">():</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:5000/get_cleaned_data&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">x_train_flat</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;x_train&#39;</span><span class="p">]</span>
+        <span class="n">y_train_flat</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y_train&#39;</span><span class="p">]</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">x_train_flat</span><span class="p">,</span> <span class="n">y_train_flat</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;predict&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s2">&quot;The trained model does not have a &#39;predict&#39; method.&quot;</span><span class="p">}</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">model_base64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">model</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Error serializing model: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="n">model_base64</span><span class="p">,</span> <span class="s1">&#39;x_test&#39;</span> <span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;x_test&#39;</span><span class="p">],</span> <span class="s1">&#39;y_test&#39;</span> <span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y_test&#39;</span><span class="p">],</span> <span class="s1">&#39;dates_test&#39;</span> <span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dates_test&#39;</span><span class="p">]}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;No data provided&quot;</span><span class="p">,</span> <span class="mi">400</span>
+
+</pre></div>
+</div>
+<p>When making the request to the data component, we expect it to return the necessary data, that is x_train, y_train, dates_train, y_test, x_test, dates_test. We will then use this data to train the model and finally return all the necessary data for the next component, the testing component, which needs all of the testing values as well as the model.</p>
+<p>This way of communication between components is called a webhook. A webhook is a method for augmenting or altering the behavior of a web application with custom callbacks, allowing real-time data sharing and event notifications between different systems by sending HTTP requests to a specified URL when certain events occur.</p>
+</section>
+<section id="testing-the-training-component-and-communication-with-the-data-component">
+<h2>Testing the training component and communication with the data component<a class="headerlink" href="#testing-the-training-component-and-communication-with-the-data-component" title="Link to this heading">#</a></h2>
+<p>To run the tests, we are again going to use either a web browser or postman, you can pick whichever you felt the most comfortable with. This time, we are also testing if the communication between the two components work, but let’s start by checking that we can run the training component successfully before proceeding. In a new terminal with the venv activated, run the same command as previuosly:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>app.py
+</pre></div>
+</div>
+<p>but this time in the folder containing the training app. Make sure the data app is also running. To test the training app we can again visit the web page or make a get request through postman. This should be the output:</p>
+<p><img alt="image.png" src="3. Creating the services and web applications/attachment:image.png" /></p>
+<p>We now see that the app seems to be running. Let’s test the training function now! You can visit or make a get request to the following webpage in order to test the training: <a class="reference external" href="http://127.0.0.1:5001/train_model">http://127.0.0.1:5001/train_model</a></p>
+<p>If everything worked as expected, you should see a list of the data returned. It should contain all the testing values as well as the trained model. If you scroll down, you should be able to see the model in the list:</p>
+<p><img alt="image-2.png" src="3. Creating the services and web applications/attachment:image-2.png" /></p>
+<p>Now we have successfully tested the training service and the communication with the data service. These tests are however quite basic, and do not test all of the code used. We will later present unit tests that can be used to test the services more thoroughly and reliably.</p>
+<p>Now we only have the testing component left to implement before we can test the entire pipeline!</p>
+</section>
+<section id="model-testing-component">
+<h2>Model Testing component<a class="headerlink" href="#model-testing-component" title="Link to this heading">#</a></h2>
+<p>Aain, we will follow the same steps as for the data and the training component:</p>
+<ol class="arabic simple">
+<li><p>Define the service</p></li>
+<li><p>Create the app and the main directory</p></li>
+<li><p>Define the directory that calls the service function</p></li>
+<li><p>test the application</p></li>
+</ol>
+<p>For the service, we know that it should take all the data sets, x_train, y_train, dates_train, t_test, y_test and dates_test as well as the trained model. From the stock price prediction notebook we have an outline for how to create the service. We will make some prediction, calcuate the RMSE value and plot the results. The difference now however, is that we need save the image and display it on the webpage. Here is the resulting service:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">def</span> <span class="nf">test_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dates_test</span><span class="p">):</span>
+    <span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+    <span class="c1">#plot the results:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dates_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Actual&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dates_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Format the date on the x-axis</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DayLocator</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="mi">120</span><span class="p">))</span>  <span class="c1"># Set major ticks every 10 days</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span> 
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Close Price&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;MSFT Stock Price Prediction&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">current_time_str</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">_%H-%M-%S&quot;</span><span class="p">)</span>
+    <span class="n">plot_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;test_plot_</span><span class="si">{</span><span class="n">current_time_str</span><span class="si">}</span><span class="s1">.png&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">plot_filename</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">plot_filename</span>
+
+</pre></div>
+</div>
+<p>In this code we again first make sure the x_test is a 2D list and then make some predictions using the model’s predict function and entering the x_test values. With the predictions and the actual y_test values we calculate an RMSE value which describes how correct the predictions were. Finally we create a plot to visualize how close the predicted values were to the real ones and save it before returning both the RMSE value and the plot filename.</p>
+<p>This time, since we’ve gone throught the process of creating first the app and then the main route, we’re just going to look at the entire app as a whole. Here is the code for the testing app:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">send_file</span><span class="p">,</span> <span class="n">jsonify</span>
+<span class="kn">from</span> <span class="nn">test_service</span> <span class="kn">import</span> <span class="n">test_model</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Agg&#39;</span><span class="p">)</span>  <span class="c1"># Use non-interactive backend</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">welcome_message</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;p&gt;This is the testing service!&lt;/p&gt;&quot;</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/test_model&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_model_cf</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:5001/train_model&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">model_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Error loading model data: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">model_binary</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">model_binary</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Error loading model: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;predict&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s2">&quot;The loaded model does not have a &#39;predict&#39; method.&quot;</span><span class="p">}</span>
+
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">x_test</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x_test&#39;</span><span class="p">)</span>
+        <span class="n">y_test</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;y_test&#39;</span><span class="p">)</span>
+        <span class="n">dates_test</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dates_test&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Error loading test data: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rmse</span><span class="p">,</span> <span class="n">plot_filename</span> <span class="o">=</span> <span class="n">test_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dates_test</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tested model successfully!&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Error testing model: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}),</span> <span class="mi">500</span>
+
+
+    <span class="n">plot_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;/get_plot/</span><span class="si">{</span><span class="n">plot_filename</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;rmse&#39;</span><span class="p">:</span> <span class="n">rmse</span><span class="p">,</span>
+        <span class="s1">&#39;plot_url&#39;</span><span class="p">:</span> <span class="n">plot_url</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">response</span> 
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/get_plot/&lt;plot_filename&gt;&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_plot</span><span class="p">(</span><span class="n">plot_filename</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">send_file</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./</span><span class="si">{</span><span class="n">plot_filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">mimetype</span><span class="o">=</span><span class="s1">&#39;image/png&#39;</span><span class="p">)</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5002</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>In this code we first create the app and the main route where we simply return a string explaining which service it is. Then we have the /test_model route where we again use a webhook to get the trained model, decode and deserialize the model and call the testing function from the service file. We then return the returned RMSE value and the plot. Notice that we have added quite a bit more try and except blocks compared to the previous components. This is mainly done to guarantee that the model got sent, deserialized and decoded correctly.</p>
+<p>Now that we have all three components ready we can test the full pipeline!</p>
+</section>
+<section id="testing-the-entire-pipeline">
+<h2>Testing the entire pipeline<a class="headerlink" href="#testing-the-entire-pipeline" title="Link to this heading">#</a></h2>
+<p>WRITE THIS ONCE YOU HAVE DECIDED HOW THE TESTING SHOULD BE DONE</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./3. Creating the services and web applications"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-component">Data component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-data-component">Testing the data component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-component">Training component.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-training-component-and-communication-with-the-data-component">Testing the training component and communication with the data component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-testing-component">Model Testing component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-entire-pipeline">Testing the entire pipeline</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lotta Hannelius
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

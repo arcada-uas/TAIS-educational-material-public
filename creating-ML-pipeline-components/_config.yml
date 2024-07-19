@@ -1,0 +1,57 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Learning to create ML pipeline components
+author: Lotta Hannelius
+logo: logo.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/arcada-uas/TAIS-educational-material-public  # Online location of your book
+  #path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: main  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+
+pages:
+  - file: "1. introduction to the project.ipynb"
+    title: Introduction to the Project
+    section: Introduction  # Optional section for grouping pages
+
+  - file: "2. Pipeline outline.ipynb"
+    title: Pipeline Outline
+    section: Introduction  # Grouped under the same section as above
+
+  - file: "3. general instructions for creating a component.ipynb"
+    title: General Instructions for Creating a Component
+    section: Introduction  # Grouped under the same section as above
+
+  - file: "2.1 first steps to creating a pipeline.ipynb"
+    title: First Steps to Creating a Pipeline
+    section: Beginning of Creating a Pipeline  # Optional section for grouping pages
+
+  - file: "Stock_Price_Prediction.ipynb"
+    title: Stock Price Prediction
+    section: Beginning of Creating a Pipeline  # Grouped under the same section as above
+
+  - file: "3.1 creating a component.ipynb"
+    title: Creating a Component
+    section: Creating the Services and Web Applications  # Optional section for grouping pages  

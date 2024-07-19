@@ -1,0 +1,34 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index.ipynb
+
+parts:
+  - caption: "1. Introduction"
+    chapters:
+      - file: "1. Introduction/1. introduction to the project.ipynb"
+      - file: "1. Introduction/2. Pipeline outline.ipynb"
+      - file: "1. Introduction/3. general instructions for creating a component.ipynb"
+  - caption: "2. Beginning of creating a pipeline"
+    chapters:
+      - file: "2. Beginning of creating a pipeline/2.1 first steps to creating a pipeline.ipynb"
+      - file: "2. Beginning of creating a pipeline/Stock_Price_Prediction.ipynb"
+  - caption: "3. Creating the services and web applications"
+    chapters:
+      - file: "3. Creating the services and web applications/3.1 creating a component.ipynb"
+      - file: "3. Creating the services and web applications/conclusion.ipynb"
+  - caption: "4. Communication using grpc and protobuffers"
+    chapters:
+      - file: "4. Communication using grpc and protobuffers/4.0 introduction.ipynb"
+      - file: "4. Communication using grpc and protobuffers/4.1 Protocol Buffers.ipynb"
+      - file: "4. Communication using grpc and protobuffers/4.2 gRPC and protocol buffers.ipynb"
+      - file: "4. Communication using grpc and protobuffers/4.3 grpc example.ipynb"
+  - caption: "5. Containerization using Docker"
+    chapters:
+      - file: "5. containerization using docker/5.1 containerization and Docker.ipynb"
+      - file: "5. containerization using docker/5.2 containerizing our components.ipynb"
+  - caption: "6. Deployment"
+    chapters:
+      - file: "6. Deployment/6.1 Introduction to Kubernetes.ipynb"
+      - file: "6. Deployment/Deployment using the playgroundapp.ipynb"
