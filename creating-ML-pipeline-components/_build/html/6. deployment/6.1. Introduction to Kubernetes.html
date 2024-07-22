@@ -190,6 +190,7 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/3.%20general%20instructions%20for%20creating%20a%20component.html">Creating a component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/4.%20Preparing%20the%20environment.html">Preparing the environment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Beginning of creating a pipeline</span></p>
 <ul class="nav bd-sidenav">
@@ -425,7 +426,7 @@ We will focus on the container orchestration software called Kubernetes. Kuberne
 <h2>Clusters: The Backbone of Container Orchestration<a class="headerlink" href="#clusters-the-backbone-of-container-orchestration" title="Link to this heading">#</a></h2>
 <p>A cluster is a group of interconnected computers, often referred to as nodes or hosts, that work together to perform a unified task. In the context of container orchestration, a cluster typically consists of multiple machines (physical or virtual) that are connected over a network and managed as a single unit.</p>
 <p>A cluster in Kubernetes typically consists of two main components: the control plane (or master node) and one or more worker nodes. The control plane manages the entire cluster and makes global decisions about the cluster state. It includes components like the API server, scheduler, controller manager and etcd. On the other hand, worker nodes are where the actual workloads run. They host the pods and containers that make up your applications. So, in a nutshell, a Kubernetes cluster contains both the brains (control plane) and the muscle (worker nodes) needed to manage and run your applications.</p>
-<p><img alt="image.png" src="6. deployment/attachment:image.png" /></p>
+<p><img alt="kubernetes cluster architecture" src="../_images/kubernetes-cluster-architecture.png" /></p>
 </section>
 <section id="role-of-clusters-in-container-orchestration">
 <h2>Role of Clusters in Container Orchestration:<a class="headerlink" href="#role-of-clusters-in-container-orchestration" title="Link to this heading">#</a></h2>

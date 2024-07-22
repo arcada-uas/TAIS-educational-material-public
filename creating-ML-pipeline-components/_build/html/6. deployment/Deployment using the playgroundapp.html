@@ -190,6 +190,7 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/3.%20general%20instructions%20for%20creating%20a%20component.html">Creating a component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/4.%20Preparing%20the%20environment.html">Preparing the environment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Beginning of creating a pipeline</span></p>
 <ul class="nav bd-sidenav">
@@ -542,14 +543,26 @@ cp<span class="w"> </span>solution.zip<span class="w"> </span>/path/to/pathsolut
 “https_chain”: “/path/to/cert.pem”,
 “https_key”: “/path/to/key.pem”</p></li>
 </ul>
-<ol class="arabic" start="12">
-<li><p>??????</p></li>
+<ol class="arabic simple" start="12">
+<li><p>Finding and applying the correct username
+In order to successfully run the app and see the deployed solution, you need to find the username of the session and apply it to the path of the deployed solution. In order to do this, you will need to add a printing statement that prints the username of the current session. This can be done by adding the following line:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>to line 109 in the views/<strong>init</strong>.py file. Here is a screenshot of what it looks like in the code:
+<img alt="playground app ss" src="../_images/pic6.2.1.PNG" /></p>
+<p>This way, when you run the app using the command <code class="docutils literal notranslate"><span class="pre">shell</span> <span class="pre">python</span> <span class="pre">app.py</span></code> you should see a line resembling the following be printed:</p>
+<p>—————————– 12345678910</p>
+<p>The dashes are only there to make it easier to find the print. You might have to open the webapplication for the app in order for the print to get executed. Once you figure out the username connected to the session, you will need to edit the path to the deployed solution. As a default, the path might be something like “solutions/User1”. You will need to replace “User1” with the number sequence that got printed previously, so for example “solutions/12345678910”. This way you should be able to see the deployed pipeline once you open the dashboard after running the python <a class="reference external" href="http://app.py">app.py</a> command.</p>
+<ol class="arabic" start="13">
 <li><p>Run the app</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>app.py
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>this command should redirect you to the playground dashboard. If it doesn’t you should be able to find the link to the dashboard in the terminal. The pipeline should now be up and running.</p></li>
+<li><p>If you can’t see any deployed solutions, then go back to the previous step and double check that the directory matches the session username.</p></li>
 </ul>
 </li>
 </ol>

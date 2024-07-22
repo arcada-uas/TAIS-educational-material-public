@@ -10,6 +10,7 @@ parts:
       - file: "1. Introduction/1. introduction to the project.ipynb"
       - file: "1. Introduction/2. Pipeline outline.ipynb"
       - file: "1. Introduction/3. general instructions for creating a component.ipynb"
+      - file: "1. Introduction/4. Preparing the environment.ipynb"
   - caption: "2. Beginning of creating a pipeline"
     chapters:
       - file: "2. Beginning of creating a pipeline/2.1 first steps to creating a pipeline.ipynb"

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Creating a component &#8212; Learning to create ML pipeline components</title>
+    <title>Preparing the environment &#8212; Learning to create ML pipeline components</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1. Introduction/3. general instructions for creating a component';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1. Introduction/4. Preparing the environment';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Preparing the environment" href="4.%20Preparing%20the%20environment.html" />
-    <link rel="prev" title="Creating a Pipeline" href="2.%20Pipeline%20outline.html" />
+    <link rel="next" title="First steps of creatng a pipeline" href="../2.%20Beginning%20of%20creating%20a%20pipeline/2.1%20first%20steps%20to%20creating%20a%20pipeline.html" />
+    <link rel="prev" title="Creating a component" href="3.%20general%20instructions%20for%20creating%20a%20component.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,8 +189,8 @@
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating a component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4.%20Preparing%20the%20environment.html">Preparing the environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.%20general%20instructions%20for%20creating%20a%20component.html">Creating a component</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preparing the environment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Beginning of creating a pipeline</span></p>
 <ul class="nav bd-sidenav">
@@ -270,7 +270,7 @@
       
       
       
-      <li><a href="https://github.com/arcada-uas/TAIS-educational-material-public/issues/new?title=Issue%20on%20page%20%2F1. Introduction/3. general instructions for creating a component.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/arcada-uas/TAIS-educational-material-public/issues/new?title=Issue%20on%20page%20%2F1. Introduction/4. Preparing the environment.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +300,7 @@
       
       
       
-      <li><a href="../_sources/1. Introduction/3. general instructions for creating a component.ipynb" target="_blank"
+      <li><a href="../_sources/1. Introduction/4. Preparing the environment.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,7 +384,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Creating a component</h1>
+    <h1>Preparing the environment</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,16 +394,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-the-service">1. Writing the service</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-the-web-applications-for-testing">2. Implement the web applications for testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-testing">3. Local testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-proto-file">4. Make a proto file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-grpc-code">5. Generate gRPC code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-and-server">6. Client and server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-grpc-server">7. Testing the grpc-server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license">8. License</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-docker-file">9. Prepare the docker file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-testing-of-the-component">10. Final testing of the component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-visual-studio-code-and-github">Installing Visual Studio Code and Github</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-git">Step 1: Install Git</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-visual-studio-code">Step 2: Install Visual Studio Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-github-account">Step 3: Set Up GitHub Account</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-clone-the-repository-and-open-it-in-vs-code">Step 4: Clone the Repository and Open it in VS Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-step-revise-the-code">Final step: revise the code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-and-venv">Python and venv</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-python">Step 1: Install Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-python-extension-for-vs-code">Step 2: Install Python Extension for VS Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-a-virtual-environment-optional-but-recommended">Step 3: Set Up a Virtual Environment (Optional but Recommended)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-install-project-dependencies">Step 4: Install Project Dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-configure-the-python-interpreter-in-vs-code">Step 5: Configure the Python Interpreter in VS Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
 </ul>
             </nav>
         </div>
@@ -415,53 +422,123 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="creating-a-component">
-<h1>Creating a component<a class="headerlink" href="#creating-a-component" title="Link to this heading">#</a></h1>
-<p>We will soon move onto the provided example on how to create a pipeline, but before we do so, it is important to have a good overview of the necessary steps. In this file we will briefly explain the steps necessary to create a component. The goal is to create a clear overview of the entire process, and therefor we will not go in depth into exactly what each step entails in practicality, but rather the reason behind the step and the outcome.</p>
-<p>In order to create a component which could be used in a ML pipeline you will need to write the necessary functions in a service file, create a web application, create a proto file based on the services provided, generate the gRPC code and implement the client and the server. All of this should then be containerized and the container image (Docker image) can then be uploaded to dockerhub. From there you can upload the dockerimage together with the protofile to the AI builder platform where it can be used as part of a pipeline. We will now go more in depth into how to complete these steps.</p>
-<p>In these steps it is assumed that you already have identified your problem, objectives and deliverable items, as well as planned what components to create and what their input and outputs are, and you’re now ready to start coding.</p>
-<section id="writing-the-service">
-<h2>1. Writing the service<a class="headerlink" href="#writing-the-service" title="Link to this heading">#</a></h2>
-<p>First you should know what kind of service you want or need. This could be for example data filtering, model training, making predictions etc. Once you have decided on the service you can pick any language supported by protobuffers that’s suitable to implement the necessary functions. Protobuffers support C++, C#, Dart, Go, Java, Kotlin, Objective-C, Python and Ruby. The service should consists of different functions that take some input and produce an output. These functions will then later be called once we implement the web application.</p>
-<p>One example of a service in this case could be a function clean_data that would take some raw data and reformat it so that it is in a fitting format for the next component. Now you might notice why it is so important to define the inputs and outputs of all the components before starting with the coding, since all components are somewhat dependent on other components.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="preparing-the-environment">
+<h1>Preparing the environment<a class="headerlink" href="#preparing-the-environment" title="Link to this heading">#</a></h1>
+<p>In order to run the examples provided in this material, you will need to use some tools and technologies. This means that you will need to download some tools and configure your machine according to the requirements. Below is a list of the necessary tools for running the examples:</p>
+<ul class="simple">
+<li><p>github</p></li>
+<li><p>Visual Studio Code or similar IDE</p></li>
+<li><p>python, venv</p></li>
+<li><p>docker</p></li>
+</ul>
+<p>Furthermore, in order to use the playground app for deployment, there are some additional requirements that will be brought up in the deployment chapter.</p>
+<p>Github will be used to copy the example code onto your local machine where it can be tested and edited. In order to edit the code you will need some sort of code editor that also allows you to run and test the code locally. We recommend visual studio code, but other similar IDEs can also be used. To install git and visual studio code, and copy the examples to your local machine, follow the instructions below.</p>
+<section id="installing-visual-studio-code-and-github">
+<h2>Installing Visual Studio Code and Github<a class="headerlink" href="#installing-visual-studio-code-and-github" title="Link to this heading">#</a></h2>
+<section id="step-1-install-git">
+<h3>Step 1: Install Git<a class="headerlink" href="#step-1-install-git" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Git is a version control system required to clone repositories from GitHub.</p></li>
+<li><p>Download Git from the official website: <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p></li>
+<li><p>Install Git by following the installation instructions for your operating system.</p></li>
+</ul>
 </section>
-<section id="implement-the-web-applications-for-testing">
-<h2>2. Implement the web applications for testing<a class="headerlink" href="#implement-the-web-applications-for-testing" title="Link to this heading">#</a></h2>
-<p>Once you have defined your services, it is time to implement the web application for the component in order to test it’s functionality before moving forward. The webapplication can be written using any suitable library, but we have chosen to use Flask as it is an easy and lightwight library for web appliation development.</p>
+<section id="step-2-install-visual-studio-code">
+<h3>Step 2: Install Visual Studio Code<a class="headerlink" href="#step-2-install-visual-studio-code" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>VS Code is a popular code editor that integrates well with Git.</p></li>
+<li><p>Download VS Code from the official website: <a class="reference external" href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a></p></li>
+<li><p>Install VS Code by following the installation instructions for your operating system.</p></li>
+</ul>
 </section>
-<section id="local-testing">
-<h2>3. Local testing<a class="headerlink" href="#local-testing" title="Link to this heading">#</a></h2>
-<p>Before comtinuing it is important that you test your application. This way you can ensure that the application works as expected and can confidently move on to the next step.</p>
-<p>At this stage, testing can be done either through command line, through the webpage where the application is run, or using postman or any other similar service. We will later go more in depth into how to do this.</p>
+<section id="step-3-set-up-github-account">
+<h3>Step 3: Set Up GitHub Account<a class="headerlink" href="#step-3-set-up-github-account" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>If you don’t have a GitHub account, you need to create one.</p></li>
+<li><p>Sign up for GitHub at <a class="reference external" href="https://github.com/">github.com</a></p></li>
+</ul>
 </section>
-<section id="make-a-proto-file">
-<h2>4. Make a proto file<a class="headerlink" href="#make-a-proto-file" title="Link to this heading">#</a></h2>
-<p>Once you have tested your web application and assured that everything works as expected, you’re ready to define the protofile based on the services. This will also later be explained in more detail, but as a general idea you need to take into consideration the data that is necessary in order to use the functions you have implemented. You should define the necessary message structures as well as the service that will be provided according to the instructions in the protocol buffers notebook.</p>
+<section id="step-4-clone-the-repository-and-open-it-in-vs-code">
+<h3>Step 4: Clone the Repository and Open it in VS Code<a class="headerlink" href="#step-4-clone-the-repository-and-open-it-in-vs-code" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The example code can be found in the github repositry linked on this website. In the upper right hand corner there’s a little github icon. If you press it you will be taken to the github repository. This icon is available from any of the pages on this website, so if you ever need to revisit the repository you can do so easily through the icon. To copy the repository, press the icon, and go to the repository. Once you have been redirected to the github repository you should see a green button labeled <code>. If you press it, a menu should pop up with cloning options. Simply chose the HTTPS option and copy the web address.</p></li>
+<li><p>Using Git CLI:
+Open a terminal and go to the directory into which you want to place the copied repository
+run the following command:
+git clone <a class="github reference external" href="https://github.com/arcada-uas/TAIS-educational-material-public.git">arcada-uas/TAIS-educational-material-public.git</a>
+once it is copied, you can right click the folder and pick open with code.</p></li>
+<li><p>Using Visual Studio Code GUI:
+open VS code
+Press ctrl+shift+P or simply write “&gt;” in the search bar on the top of the page to open the command palette
+Start writing git clone and press it when you see it
+Enter the web address into the command palette
+pick a directory into which the project should be copied and open the project</p></li>
+</ul>
 </section>
-<section id="generate-grpc-code">
-<h2>5. Generate gRPC code<a class="headerlink" href="#generate-grpc-code" title="Link to this heading">#</a></h2>
-<p>Once you have defined the protofile you can use it to generate the necessary gRPC code for your service. The process of generating the code as well as the resulting code will differ depending on the language you have chosen for your application. As mentioned in the gRPC notebook later on, the generated code will contain code for the service interface as well as the grpc-client and -server.</p>
+<section id="final-step-revise-the-code">
+<h3>Final step: revise the code<a class="headerlink" href="#final-step-revise-the-code" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Once you have all of the code copied to your local machine and are able to open the project with vs code, you can look through the folders. You might notice that the folders are named in the same way that the chapters on the webpage is named. The example corresponding to e specific chapter is of course going to be located in the folder of the same name. We will go through the examples in detail in later chapters, so you don’t need to familiarize yourself with the code too much right now. However, you might want to look at the next step already at this point.</p></li>
+</ul>
 </section>
-<section id="client-and-server">
-<h2>6. Client and server<a class="headerlink" href="#client-and-server" title="Link to this heading">#</a></h2>
-<p>Next you will need to implement the grpc-client and -server using the generated gRPC code. The server should implement the services defined in the protofile. Since you already defined them when creating the service, you can simply import the functions. The client should have a stub which should’ve been generated in the previous step. The stub allows for easy communication between the client and the server.</p>
 </section>
-<section id="testing-the-grpc-server">
-<h2>7. Testing the grpc-server<a class="headerlink" href="#testing-the-grpc-server" title="Link to this heading">#</a></h2>
-<p>Again, it is important that you test your application before continuing with the next step. You can test the grpc-server by running it using the command python <a class="reference external" href="http://server.py">server.py</a> where <a class="reference external" href="http://server.py">server.py</a> is the name of the file containing your grpc server, and also running the client with the same command using the name of the file where the client code is located. The client should call the different methods available at the server. This way you can test if all the functions on the server side works as expected, and if the communication also works properly.</p>
+<section id="python-and-venv">
+<h2>Python and venv<a class="headerlink" href="#python-and-venv" title="Link to this heading">#</a></h2>
+<p>The examples all use the python language, so if you haven’t used python on your machine before, we recommend following these steps:</p>
+<section id="step-1-install-python">
+<h3>Step 1: Install Python<a class="headerlink" href="#step-1-install-python" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Ensure that Python is installed on your system.</p></li>
+<li><p>Download Python from the official website: <a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p></li>
+<li><p>Install Python and ensure the option to add Python to your PATH is selected during installation.</p></li>
+</ul>
 </section>
-<section id="license">
-<h2>8. License<a class="headerlink" href="#license" title="Link to this heading">#</a></h2>
-<p>Before creating the docker image you will need to include an apache 2.0 license as gRPC falls under it.</p>
+<section id="step-2-install-python-extension-for-vs-code">
+<h3>Step 2: Install Python Extension for VS Code<a class="headerlink" href="#step-2-install-python-extension-for-vs-code" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>To enhance your Python development experience in VS Code, install the Python extension.</p></li>
+<li><p>Open VS Code.</p></li>
+<li><p>Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or pressing Ctrl+Shift+X.</p></li>
+<li><p>Search for Python and install the extension provided by Microsoft.</p></li>
+</ul>
 </section>
-<section id="prepare-the-docker-file">
-<h2>9. Prepare the docker file<a class="headerlink" href="#prepare-the-docker-file" title="Link to this heading">#</a></h2>
-<p>Next you can create the dockerfile. You will need to copy over the necessary code, run installation commands and write an entrypoint command. After having written the dockerfile you can build the docker image with the docker command “docker build -t [name of build] .” in the folder containing the code and the dockerfile. Once the docker image has been build you can run it either through the command line or using docker desktop.</p>
-<p>When you have multiple components that are expected to communicate together it’s a good idea to also define a docker-compose.yaml file. This file will define the dependencies between the applications. This means that if for example the model training component is dependent on the output of the data cleaning component, docker will ensure that the data cleaning component is up an running before starting the model training component. Docker also makes sure that the components are in the same network so that they can communicate between each other.</p>
+<section id="step-3-set-up-a-virtual-environment-optional-but-recommended">
+<h3>Step 3: Set Up a Virtual Environment (Optional but Recommended)<a class="headerlink" href="#step-3-set-up-a-virtual-environment-optional-but-recommended" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>A virtual environment helps manage dependencies and avoid conflicts with other projects.</p></li>
+<li><p>Open the terminal in VS Code (`Ctrl+``).</p></li>
+<li><p>Navigate to the root of your project directory.</p></li>
+<li><p>Create a virtual environment:</p>
+<p>python -m venv .venv</p>
+</li>
+<li><p>activate the environment:
+Windows: venv\Scripts\activate
+Linux/MacOS: source venv/bin/activate</p></li>
+</ul>
 </section>
-<section id="final-testing-of-the-component">
-<h2>10. Final testing of the component<a class="headerlink" href="#final-testing-of-the-component" title="Link to this heading">#</a></h2>
-<p>Before moving on to uploading the component to the AI builder platform, it’s a good idea to test that the application works as expected also after the containerization. Run the application using docker to test the functionality.</p>
+<section id="step-4-install-project-dependencies">
+<h3>Step 4: Install Project Dependencies<a class="headerlink" href="#step-4-install-project-dependencies" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Since the project includes a requirements.txt file, use it to install dependencies.</p></li>
+<li><p>With the virtual environment activated, run:
+pip install -r requirements.txt</p></li>
+</ul>
+</section>
+<section id="step-5-configure-the-python-interpreter-in-vs-code">
+<h3>Step 5: Configure the Python Interpreter in VS Code<a class="headerlink" href="#step-5-configure-the-python-interpreter-in-vs-code" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Ensure that VS Code uses the correct Python interpreter.</p></li>
+<li><p>Open the Command Palette (Ctrl+Shift+P).</p></li>
+<li><p>Type and select Python: Select Interpreter.</p></li>
+<li><p>Choose the interpreter from your virtual environment (it should be listed).</p></li>
+</ul>
+<p>Now you should be able to run the python code!</p>
+</section>
+</section>
+<section id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Link to this heading">#</a></h2>
+<p>Further down the line you will also need docker in order to test the examples. Docker is a platform that enables developers to automate the deployment of applications inside lightweight, portable, self-sufficient containers that can run virtually anywhere. To donwload docker, visit the Docker Installation Page: <a class="reference external" href="https://docs.docker.com/get-docker/">https://docs.docker.com/get-docker/</a>. Choose your operating system from the list (Windows, macOS, Linux) and follow the step-by-step instructions provided for your specific operating system. This typically involves downloading the Docker Desktop installer for Windows and macOS, or using a package manager for Linux.</p>
+<p>Once you have completed the docker installation you should be ready for the first 5 chapters’ examples. In the deployment chapter we will provide further instructions for how to comply to the specific requirements for the playgruond app.</p>
 </section>
 </section>
 
@@ -496,20 +573,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="2.%20Pipeline%20outline.html"
+       href="3.%20general%20instructions%20for%20creating%20a%20component.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Creating a Pipeline</p>
+        <p class="prev-next-title">Creating a component</p>
       </div>
     </a>
     <a class="right-next"
-       href="4.%20Preparing%20the%20environment.html"
+       href="../2.%20Beginning%20of%20creating%20a%20pipeline/2.1%20first%20steps%20to%20creating%20a%20pipeline.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Preparing the environment</p>
+        <p class="prev-next-title">First steps of creatng a pipeline</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -529,16 +606,23 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-the-service">1. Writing the service</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-the-web-applications-for-testing">2. Implement the web applications for testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-testing">3. Local testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-proto-file">4. Make a proto file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-grpc-code">5. Generate gRPC code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-and-server">6. Client and server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-grpc-server">7. Testing the grpc-server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license">8. License</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-docker-file">9. Prepare the docker file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-testing-of-the-component">10. Final testing of the component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-visual-studio-code-and-github">Installing Visual Studio Code and Github</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-git">Step 1: Install Git</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-visual-studio-code">Step 2: Install Visual Studio Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-github-account">Step 3: Set Up GitHub Account</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-clone-the-repository-and-open-it-in-vs-code">Step 4: Clone the Repository and Open it in VS Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-step-revise-the-code">Final step: revise the code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-and-venv">Python and venv</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-python">Step 1: Install Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-python-extension-for-vs-code">Step 2: Install Python Extension for VS Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-a-virtual-environment-optional-but-recommended">Step 3: Set Up a Virtual Environment (Optional but Recommended)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-install-project-dependencies">Step 4: Install Project Dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-configure-the-python-interpreter-in-vs-code">Step 5: Configure the Python Interpreter in VS Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
 </ul>
   </nav></div>
 

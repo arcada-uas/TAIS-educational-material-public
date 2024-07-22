@@ -31,27 +31,3 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-pages:
-  - file: "1. introduction to the project.ipynb"
-    title: Introduction to the Project
-    section: Introduction  # Optional section for grouping pages
-
-  - file: "2. Pipeline outline.ipynb"
-    title: Pipeline Outline
-    section: Introduction  # Grouped under the same section as above
-
-  - file: "3. general instructions for creating a component.ipynb"
-    title: General Instructions for Creating a Component
-    section: Introduction  # Grouped under the same section as above
-
-  - file: "2.1 first steps to creating a pipeline.ipynb"
-    title: First Steps to Creating a Pipeline
-    section: Beginning of Creating a Pipeline  # Optional section for grouping pages
-
-  - file: "Stock_Price_Prediction.ipynb"
-    title: Stock Price Prediction
-    section: Beginning of Creating a Pipeline  # Grouped under the same section as above
-
-  - file: "3.1 creating a component.ipynb"
-    title: Creating a Component
-    section: Creating the Services and Web Applications  # Optional section for grouping pages  
