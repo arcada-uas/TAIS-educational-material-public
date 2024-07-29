@@ -33,3 +33,4 @@ parts:
     chapters:
       - file: "6. Deployment/6.1 Introduction to Kubernetes.ipynb"
       - file: "6. Deployment/Deployment using the playgroundapp.ipynb"
+  - file: end.ipynb
