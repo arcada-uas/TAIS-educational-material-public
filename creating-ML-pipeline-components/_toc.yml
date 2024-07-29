@@ -17,7 +17,7 @@ parts:
       - file: "2. Beginning of creating a pipeline/Stock_Price_Prediction.ipynb"
   - caption: "3. Creating the services and web applications"
     chapters:
-      - file: "3. Creating the services and web applications/3.1 creating a component.ipynb"
+      - file: "3. Creating the services and web applications/3.1 creating a component example.ipynb"
       - file: "3. Creating the services and web applications/conclusion.ipynb"
   - caption: "4. Communication using grpc and protobuffers"
     chapters:
