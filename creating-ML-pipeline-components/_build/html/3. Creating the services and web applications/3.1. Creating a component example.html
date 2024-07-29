@@ -197,8 +197,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/2.1%20first%20steps%20to%20creating%20a%20pipeline.html">First steps of creatng a pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/Stock_Price_Prediction.html">Stock Price Prediction Example Pipeline</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3. Creating the services and web applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Creating the Web Applications: Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4. Communication using grpc and protobuffers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Communication%20using%20grpc%20and%20protobuffers/4.0%20introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Communication%20using%20grpc%20and%20protobuffers/4.2%20gRPC%20and%20protocol%20buffers.html">gRPC and Protocol Buffers</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Communication%20using%20grpc%20and%20protobuffers/4.3%20grpc%20example.html">Configuring the components to communicate using gRPC</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5. Containerization using Docker</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.%20containerization%20using%20docker/5.1.%20containerization%20and%20Docker.html">Containerization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5.%20containerization%20using%20docker/5.2%20containerizing%20our%20components.html">Containerizing our components</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6. Deployment</span></p>
@@ -516,13 +528,13 @@ Press<span class="w"> </span>CTRL+C<span class="w"> </span>to<span class="w"> </
 </pre></div>
 </div>
 <p>Go ahead and open the web address where the app is running. You should see something like this:
-<img alt="image.png" src="3. Creating the services and web applications/attachment:image.png" /></p>
+<img alt="local testing with web address" src="../_images/pic3.1.1.png" /></p>
 <p>Now if you change the route to the /get_cleaned_data route you should see the following:
-<img alt="image-2.png" src="3. Creating the services and web applications/attachment:image-2.png" /></p>
+<img alt="testing get_cleaned_data route" src="../_images/pic3.1.2.png" /></p>
 <p>The output displayed is the cleaned data returned by the service. It is quite a long list, but if you scroll down you can see that it contains all the necessary data, that is train_dates, train_x, train_y, test_dates, test_x and test_y. The testing can also be done using postman. To use postman, enter the web address of the data application into the URL field, and speicify the request method to be get. If you then press send you should see the returned text:</p>
-<p><img alt="image-3.png" src="3. Creating the services and web applications/attachment:image-3.png" /></p>
+<p><img alt="testing using postman" src="../_images/pic3.1.3.png" /></p>
 <p>If you then again add /get_cleaned_data to the end of the address you should see the cleaned data returned.</p>
-<p><img alt="image-4.png" src="3. Creating the services and web applications/attachment:image-4.png" /></p>
+<p><img alt="testing get_cleaned_data route using postman" src="../_images/pic3.1.4.png" /></p>
 <p>We have now confirmed that the service works as expected. For further debugging and testing you can also use print statements.</p>
 <p>Now we have defined the necessary functions for the data component. We still need to somehow send the cleaned data forward to the next service. We will come back to this after creating the training component. For now, we will test the code we have written so far, and then move on to the next component.</p>
 </section>
@@ -615,10 +627,10 @@ Press<span class="w"> </span>CTRL+C<span class="w"> </span>to<span class="w"> </
 </pre></div>
 </div>
 <p>but this time in the folder containing the training app. Make sure the data app is also running. To test the training app we can again visit the web page or make a get request through postman. This should be the output:</p>
-<p><img alt="image.png" src="3. Creating the services and web applications/attachment:image.png" /></p>
+<p><img alt="testing the training component" src="../_images/pic3.1.5.png" /></p>
 <p>We now see that the app seems to be running. Let’s test the training function now! You can visit or make a get request to the following webpage in order to test the training: <a class="reference external" href="http://127.0.0.1:5001/train_model">http://127.0.0.1:5001/train_model</a></p>
 <p>If everything worked as expected, you should see a list of the data returned. It should contain all the testing values as well as the trained model. If you scroll down, you should be able to see the model in the list:</p>
-<p><img alt="image-2.png" src="3. Creating the services and web applications/attachment:image-2.png" /></p>
+<p><img alt="testing the train_model route" src="../_images/pic3.1.6.png" /></p>
 <p>Now we have successfully tested the training service and the communication with the data service. These tests are however quite basic, and do not test all of the code used. We will later present unit tests that can be used to test the services more thoroughly and reliably.</p>
 <p>Now we only have the testing component left to implement before we can test the entire pipeline!</p>
 </section>
