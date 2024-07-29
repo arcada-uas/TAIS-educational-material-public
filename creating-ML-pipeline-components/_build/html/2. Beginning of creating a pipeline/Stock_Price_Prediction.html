@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Learning to create ML pipeline components</title>
+    <title>Stock Price Prediction Example Pipeline &#8212; Learning to create ML pipeline components</title>
   
   
   
@@ -193,12 +193,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/4.%20Preparing%20the%20environment.html">Preparing the environment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Beginning of creating a pipeline</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2.1%20first%20steps%20to%20creating%20a%20pipeline.html">First steps of creatng a pipeline</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Stock Price Prediction Example Pipeline</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5. Containerization using Docker</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../5.%20containerization%20using%20docker/5.2%20containerizing%20our%20components.html">Containerizing our components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6. Deployment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.%20Deployment/6.1.%20Introduction%20to%20Kubernetes.html">Introduction to the software stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.%20Deployment/Deployment%20using%20the%20playgroundapp.html">Local deployment using the playground app</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7. Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../end.html">Ending</a></li>
 </ul>
 
     </div>
@@ -371,9 +381,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -384,19 +392,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Stock Price Prediction Example Pipeline</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -406,7 +406,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="stock-price-prediction-example-pipeline">
+<h1>Stock Price Prediction Example Pipeline<a class="headerlink" href="#stock-price-prediction-example-pipeline" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import necessary libraries</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -509,6 +511,7 @@ Root Mean Squared Error (RMSE): 3.8713363621627326
 <img alt="../_images/e5bef77703af92e79979b37a39cd4aee93b96f39e5cb56664e681fc2ac3d2c38.png" src="../_images/e5bef77703af92e79979b37a39cd4aee93b96f39e5cb56664e681fc2ac3d2c38.png" />
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -564,21 +567,6 @@ Root Mean Squared Error (RMSE): 3.8713363621627326
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
