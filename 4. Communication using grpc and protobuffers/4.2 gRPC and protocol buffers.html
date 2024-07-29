@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>gRPC and Protocol Buffers &#8212; My sample book</title>
+    <title>gRPC and Protocol Buffers &#8212; Learning to create ML pipeline components</title>
   
   
   
@@ -153,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Learning to create ML pipeline components - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Learning to create ML pipeline components - Home"/>`);</script>
   
   
 </a></div>
@@ -175,7 +175,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    welcome to your book!
+                    Building components for ML pipelines!
                 </a>
             </li>
         </ul>
@@ -190,11 +190,12 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/3.%20general%20instructions%20for%20creating%20a%20component.html">Creating a component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/4.%20Preparing%20the%20environment.html">Preparing the environment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Beginning of creating a pipeline</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/2.1%20first%20steps%20to%20creating%20a%20pipeline.html">First steps of creatng a pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/Stock_Price_Prediction.html">Stock Price Prediction example pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/Stock_Price_Prediction.html">Stock Price Prediction Example Pipeline</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4. Communication using grpc and protobuffers</span></p>
 <ul class="current nav bd-sidenav">
@@ -206,6 +207,15 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5. Containerization using Docker</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../5.%20containerization%20using%20docker/5.2%20containerizing%20our%20components.html">Containerizing our components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6. Deployment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.%20Deployment/6.1.%20Introduction%20to%20Kubernetes.html">Introduction to the software stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.%20Deployment/Deployment%20using%20the%20playgroundapp.html">Local deployment using the playground app</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7. Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../end.html">Ending</a></li>
 </ul>
 
     </div>
@@ -260,7 +270,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/arcada-uas/TAIS-educational-material-public" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +287,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F4. Communication using grpc and protobuffers/4.2 gRPC and protocol buffers.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/arcada-uas/TAIS-educational-material-public/issues/new?title=Issue%20on%20page%20%2F4. Communication using grpc and protobuffers/4.2 gRPC and protocol buffers.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -424,7 +434,7 @@ document.write(`
 <p>With gRPC, services are split into a server and client. The server side hosts and implements the service methods defined in the .proto file and handles incoming requests from clients. The client utilizes stubs to interact with the remote procedure calls. The stub abstracts away the complexities of network communication and allows clients to invoke methods on the remote server as if they were local function calls.
 gRPC services can be defined in protofiles as discussed in the protocol buffers section. The protofile serves as the contact between the client and the server, ensuring both sides agree on the data structures and available methods.</p>
 <p>Below you can see a graph that tries to explain how the communication between the client and server works:
-<img alt="image-2.png" src="4. Communication using grpc and protobuffers/attachment:image-2.png" /></p>
+<img alt="grpc graph" src="../_images/pic4.2.1.png" /></p>
 <p>You can see how the functions are implemented on the server side, and can be reached through the stub on the client side. On the client side, calling the functions works as if the functions were implemented locally. This works because the stub makes a request to the server, and this request is abstracted away to the client. Te stub both handles doing the request and receiving the reponse, so the client can simply call the function as if it was implemented locally.</p>
 <section id="code-generation">
 <h2>Code generation<a class="headerlink" href="#code-generation" title="Link to this heading">#</a></h2>
@@ -433,7 +443,7 @@ gRPC services can be defined in protofiles as discussed in the protocol buffers 
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="using-grpc">
 <h1>Using grpc<a class="headerlink" href="#using-grpc" title="Link to this heading">#</a></h1>
-<p><img alt="image.png" src="4. Communication using grpc and protobuffers/attachment:image.png" /></p>
+<p><img alt="grpc code graph" src="../_images/pic4.2.2.png" /></p>
 <p>In the image above, you can see a graph explaining the different parts necessary to utilize grpc. Moving from the top to bottom, you first need to define the service where all server functions will be implemented. If we think about the example we went through in the previous chapter, we already created the services for the components. For example, the data service contains the clean_data function.</p>
 <p>Once the service is defined, you can write the protofile. When writing the protofile you need to know which functions should be available as RPC methods, as well as their input and output. You can then define proto messages based on the input and output, and the service with all it’s functions.</p>
 <p>The protofile is the used to generate code both for the clinet and the server. This code will be available in the pb2 and pb2_grpc files. The generated code can the be used to create the client and the server.</p>
@@ -524,7 +534,7 @@ gRPC services can be defined in protofiles as discussed in the protocol buffers 
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By Lotta Hannelius
 </p>
 
   </div>
