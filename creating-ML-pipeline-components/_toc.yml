@@ -22,7 +22,7 @@ parts:
   - caption: "4. Communication using grpc and protobuffers"
     chapters:
       - file: "4. Communication using grpc and protobuffers/4.0 introduction.ipynb"
-      - file: "4. Communication using grpc and protobuffers/4.1 Protocol buffers.ipynb"
+      - file: "4. Communication using grpc and protobuffers/4.1. Protocol buffers.ipynb"
       - file: "4. Communication using grpc and protobuffers/4.2 gRPC and protocol buffers.ipynb"
       - file: "4. Communication using grpc and protobuffers/4.3 grpc example.ipynb"
   - caption: "5. Containerization using Docker"
