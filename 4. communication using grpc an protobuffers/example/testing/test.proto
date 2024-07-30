@@ -14,5 +14,6 @@ message TestRequest {
 }
 
 message TestResponse {
-  double rmse = 2;
+  double rmse = 1;
+  bytes plot = 2;
 }

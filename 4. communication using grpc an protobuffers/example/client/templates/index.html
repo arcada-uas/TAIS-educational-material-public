@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ML Pipeline Web UI</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>ML Pipeline Web UI</h1>
+
+    <!-- Clean Data Form -->
+    <form id="cleanDataForm">
+        <label for="csv_file_path">CSV File Path:</label>
+        <input type="text" id="csv_file_path" name="csv_file_path" required>
+        <button type="submit">Clean Data</button>
+    </form>
+    <div id="cleanDataResult"></div>
+
+    <!-- Train Model Form -->
+    <form id="trainModelForm" style="display: none;">
+        <button type="submit">Train Model</button>
+    </form>
+    <div id="trainModelResult"></div>
+
+    <!-- Test Model Form -->
+    <form id="testModelForm" style="display: none;">
+        <button type="submit">Test Model</button>
+    </form>
+    <div id="testModelResult"></div>
+    <div id="plotResult" style="display: none;">
+        <h3>Model Plot</h3>
+        <img id="plotImage" src="" alt="Model Plot" style="max-width: 100%; height: auto;">
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let cleanedData = null;
+            let model = null;
+
+            // Handle Clean Data Form Submission
+            $('#cleanDataForm').submit(function(event) {
+                event.preventDefault();
+                $('#cleanDataResult').text('Cleaning data...');
+                
+                $.post('/clean_data', $(this).serialize(), function(data) {
+                    if (data.error) {
+                        $('#cleanDataResult').html(`<p style="color: red;">Error: ${data.error}</p>`);
+                    } else {
+                        $('#cleanDataResult').html(`<pre>${JSON.stringify(data, null, 2)}</pre>`);
+                        cleanedData = data;
+                        $('#trainModelForm').show();
+                    }
+                });
+            });
+
+            // Handle Train Model Form Submission
+            $('#trainModelForm').submit(function(event) {
+                event.preventDefault();
+                $('#trainModelResult').text('Training model...');
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '/train_model',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        x_train: cleanedData.x_train,
+                        y_train: cleanedData.y_train
+                    }),
+                    success: function(data) {
+                        if (data.error) {
+                            $('#trainModelResult').html(`<p style="color: red;">Error: ${data.error}</p>`);
+                        } else {
+                            $('#trainModelResult').html(`<pre>${JSON.stringify(data, null, 2)}</pre>`);
+                            model = data.model;
+                            $('#testModelForm').show();
+                        }
+                    }
+                });
+            });
+
+            // Handle Test Model Form Submission
+            $('#testModelForm').submit(function(event) {
+                event.preventDefault();
+                $('#testModelResult').text('Testing model...');
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '/test_model',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        model: model,
+                        x_test: cleanedData.x_test,
+                        y_test: cleanedData.y_test,
+                        dates_test: cleanedData.dates_test
+                    }),
+                    success: function(data) {
+                        if (data.error) {
+                            $('#testModelResult').html(`<p style="color: red;">Error: ${data.error}</p>`);
+                        } else {
+                            $('#testModelResult').html(`<pre>${JSON.stringify(data, null, 2)}</pre>`);
+                            if (data.plot) {
+                                $('#plotImage').attr('src', 'data:image/png;base64,' + data.plot);
+                                $('#plotResult').show();
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
