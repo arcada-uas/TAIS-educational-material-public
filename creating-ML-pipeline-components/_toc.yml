@@ -31,8 +31,8 @@ parts:
       - file: "5. containerization using docker/5.2 containerizing our components.ipynb"
   - caption: "6. Deployment"
     chapters:
-      - file: "6. Deployment/6.1. Introduction to Kubernetes.ipynb"
-      - file: "6. Deployment/Deployment using the playgroundapp.ipynb"
+      - file: "6. deployment/6.1. Introduction to Kubernetes.ipynb"
+      - file: "6. deployment/Deployment using the playgroundapp.ipynb"
   - caption: "7. Conclusion"
     chapters:
       - file: end.ipynb

@@ -217,8 +217,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6. Deployment</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6.%20Deployment/6.1.%20Introduction%20to%20Kubernetes.html">Introduction to the software stack</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.%20Deployment/Deployment%20using%20the%20playgroundapp.html">Local deployment using the playground app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.%20deployment/6.1.%20Introduction%20to%20Kubernetes.html">Introduction to the software stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.%20deployment/Deployment%20using%20the%20playgroundapp.html">Local deployment using the playground app</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7. Conclusion</span></p>
 <ul class="nav bd-sidenav">
@@ -429,9 +429,11 @@ document.write(`
 <p>We have written a script that trains and tests a stock price prediction model, and it can be found in the notebook named Stock_Price_Prediction.ipynb. Make sure to familiarize yourself with the script and go through it at least once.</p>
 <p>You might have noticed that the script first reads data from a csv file, secondly it cleans the data and prepares it for the training. Next the model is trained and lastly it is tested. We have decided to split this script into three components: data cleaning, model training and model testing.</p>
 <p>Let’s now define the input and output of the components. We know that the data components should read a csv file, so it needs to somehow receive the data in the csv file. The components should then clean the data and prepare it for the training. Since we are using a linear regression model, we know that we need to provide two variables to the training component, x and y. We also want to test the model, so the data needs to be split into training and testing data, as the model should be tested on data it has not seen during the training.</p>
-<p>As for the training component, it need to get the x and y values for the Linear regression model. The component should then train a model. In order for the next component to test the model it of course need access to the model it self, so the trained model should be the output of the training component.</p>
-<p>Lastly the testing component should get the model and test in somehow. The output should then be the result of the test or tests. In our case we test the prediction both visually and by calculating the RMSE value, so both the produced graph and the RMSE value should be returned.</p>
+<p>As for the training component, it needs to get the x and y values for the Linear regression model. The component should then train a model. In order for the next component to test the model it of course needs access to the model itself, so the trained model should be the output of the training component.</p>
+<p>Lastly the testing component should get the model and test it somehow. The output should then be the result of the test or tests. In our case we test the prediction both visually and by calculating the RMSE value, so both the produced graph and the RMSE value should be returned.</p>
 <p><img alt="simple pipeline" src="../_images/pic2.1.1.png" /></p>
+<p>Now it is important to consider the end goal. How will the pipeline be used and in what environment? This will decide for example how the plot should be returned and displayed. In our case, we will later create a web application from which you can go through the pipeline. We want to display the created graph on the web page. We need to also take into consideration that the different components should be able to run independently on different machines, so we can’t simply use the plt.show() functiona as in the stock_price prediction script, but rather we will need to send the plot form the testing component to the web application so that it can be displayed.</p>
+<p>Since the creation process includes a lot of different steps, it is very important that you have a clear understanding of exactly what the end product should be. If you later in the process need to change something it will require a lot of extra work, so make sure you know exaclty what you want to create!</p>
 </section>
 
     <script type="text/x-thebe-config">
