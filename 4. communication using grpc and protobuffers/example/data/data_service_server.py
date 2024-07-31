@@ -2,10 +2,10 @@
 
 from concurrent import futures
 import grpc
-from data import data_pb2_grpc
-from data import data_pb2
+import data_pb2_grpc
+import data_pb2
 import pandas as pd
-from data.data_service import clean_data
+from data_service import clean_data
 import os
 import io
 import logging

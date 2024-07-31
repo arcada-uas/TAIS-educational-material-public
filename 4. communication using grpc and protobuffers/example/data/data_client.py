@@ -1,6 +1,6 @@
 import grpc
-from data import data_pb2_grpc
-from data import data_pb2
+import data_pb2_grpc
+import data_pb2
 
 
 

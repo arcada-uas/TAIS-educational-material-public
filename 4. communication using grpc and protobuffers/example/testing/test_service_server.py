@@ -1,7 +1,7 @@
 import grpc
-from testing import test_pb2_grpc
-from testing import test_pb2
-from testing.test_service import test_model
+import test_pb2_grpc
+import test_pb2
+from test_service import test_model
 from concurrent import futures
 import pickle
 import base64

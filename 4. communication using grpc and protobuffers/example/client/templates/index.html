@@ -9,9 +9,9 @@
     <h1>ML Pipeline Web UI</h1>
 
     <!-- Clean Data Form -->
-    <form id="cleanDataForm">
-        <label for="csv_file_path">CSV File Path:</label>
-        <input type="text" id="csv_file_path" name="csv_file_path" required>
+    <form id="cleanDataForm" enctype="multipart/form-data">
+        <label for="csv_file">CSV File:</label>
+        <input type="file" id="csv_file" name="csv_file" required>
         <button type="submit">Clean Data</button>
     </form>
     <div id="cleanDataResult"></div>
@@ -27,10 +27,6 @@
         <button type="submit">Test Model</button>
     </form>
     <div id="testModelResult"></div>
-    <div id="plotResult" style="display: none;">
-        <h3>Model Plot</h3>
-        <img id="plotImage" src="" alt="Model Plot" style="max-width: 100%; height: auto;">
-    </div>
 
     <script>
         $(document).ready(function() {
@@ -42,13 +38,26 @@
                 event.preventDefault();
                 $('#cleanDataResult').text('Cleaning data...');
                 
-                $.post('/clean_data', $(this).serialize(), function(data) {
-                    if (data.error) {
-                        $('#cleanDataResult').html(`<p style="color: red;">Error: ${data.error}</p>`);
-                    } else {
-                        $('#cleanDataResult').html(`<pre>${JSON.stringify(data, null, 2)}</pre>`);
-                        cleanedData = data;
-                        $('#trainModelForm').show();
+                const formData = new FormData();
+                formData.append('csv_file', $('#csv_file')[0].files[0]);
+
+                $.ajax({
+                    url: '/clean_data',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        if (data.error) {
+                            $('#cleanDataResult').html(`<p style="color: red;">Error: ${data.error}</p>`);
+                        } else {
+                            $('#cleanDataResult').html('<p>Data cleaned successfully!</p>');
+                            cleanedData = data;
+                            $('#trainModelForm').show();
+                        }
+                    },
+                    error: function(xhr) {
+                        $('#cleanDataResult').html(`<p style="color: red;">Error: ${xhr.responseJSON.error}</p>`);
                     }
                 });
             });
@@ -70,10 +79,13 @@
                         if (data.error) {
                             $('#trainModelResult').html(`<p style="color: red;">Error: ${data.error}</p>`);
                         } else {
-                            $('#trainModelResult').html(`<pre>${JSON.stringify(data, null, 2)}</pre>`);
+                            $('#trainModelResult').html('<p>Model trained successfully!</p>');
                             model = data.model;
                             $('#testModelForm').show();
                         }
+                    },
+                    error: function(xhr) {
+                        $('#trainModelResult').html(`<p style="color: red;">Error: ${xhr.responseJSON.error}</p>`);
                     }
                 });
             });
@@ -97,12 +109,14 @@
                         if (data.error) {
                             $('#testModelResult').html(`<p style="color: red;">Error: ${data.error}</p>`);
                         } else {
-                            $('#testModelResult').html(`<pre>${JSON.stringify(data, null, 2)}</pre>`);
-                            if (data.plot) {
-                                $('#plotImage').attr('src', 'data:image/png;base64,' + data.plot);
-                                $('#plotResult').show();
-                            }
+                            $('#testModelResult').html(`
+                                <p>RMSE: ${data.rmse}</p>
+                                <img src="data:image/png;base64,${data.plot}" alt="Plot Image">
+                            `);
                         }
+                    },
+                    error: function(xhr) {
+                        $('#testModelResult').html(`<p style="color: red;">Error: ${xhr.responseJSON.error}</p>`);
                     }
                 });
             });

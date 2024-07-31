@@ -14,6 +14,10 @@ app = Flask(__name__)
 def welcome_message():
     return "<p>This is the testing service!</p>"
 
+def save_plot_image(plot_binary, filename):
+    with open(filename, 'wb') as f:
+        f.write(plot_binary)
+
 
 @app.route("/test_model")
 def test_model_cf():
@@ -43,26 +47,20 @@ def test_model_cf():
         return {'error': f"Error loading test data: {str(e)}"}
 
     try:
-        rmse, plot_filename = test_model(model, x_test, y_test, dates_test)
+        rmse, plot_binary = test_model(model, x_test, y_test, dates_test)
         print("tested model successfully!")
     except Exception as e:
         return jsonify({'error': f"Error testing model: {str(e)}"}), 500
 
 
-    plot_url = f'/get_plot/{plot_filename}'
 
     response = {
         'rmse': rmse,
-        'plot_url': plot_url
     }
+    plot_filename = 'plot.png'
+    save_plot_image(plot_binary, plot_filename)
 
     return response 
-
-
-@app.route("/get_plot/<plot_filename>")
-def get_plot(plot_filename):
-    return send_file(f'./{plot_filename}', mimetype='image/png')
-
 
 
 if __name__ == "__main__":
