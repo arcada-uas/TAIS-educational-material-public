@@ -13,8 +13,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 8082
-
 # Command to run the Flask app
-CMD ["python", "test_service_server.py"]
+CMD ["python", "train_service_server.py"]
