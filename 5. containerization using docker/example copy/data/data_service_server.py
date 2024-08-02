@@ -41,16 +41,12 @@ class DataServiceServicer(data_pb2_grpc.DataServiceServicer):
 
 
 def serve():
-    print("in serve function")
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     data_pb2_grpc.add_DataServiceServicer_to_server(DataServiceServicer(), server)
     server.add_insecure_port('[::]:8080')
     server.start()
-    print("Data service server started on port 8080.", flush=True)
+    print("Data service server started on port 8080.")
     server.wait_for_termination()
 
-
-
 if __name__ == '__main__':
-    print("in main", flush=True)
     serve()

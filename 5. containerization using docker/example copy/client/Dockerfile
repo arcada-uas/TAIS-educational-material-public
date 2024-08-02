@@ -16,5 +16,5 @@ RUN chmod +x /usr/local/bin/wait-for-it.sh
 # Copy the rest of the application code
 COPY . .
 
-# Command to run the client
-CMD ["wait-for-it.sh", "data-server:8080", "--", "wait-for-it.sh", "train-server:8081", "--", "wait-for-it.sh", "test-server:8082", "--", "python", "client.py"]
+# Command to run the Flask web server
+CMD ["wait-for-it.sh", "data-server:8080", "--", "wait-for-it.sh", "train-server:8081", "--", "wait-for-it.sh", "test-server:8082", "--", "flask", "run", "--host=0.0.0.0", "--port=5000"]

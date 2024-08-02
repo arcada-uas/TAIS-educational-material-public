@@ -29,9 +29,12 @@ services:
     networks:
       - example-network
   
-  grpc-client:
+  web-client:
     build: 
       context: ./client
+    image: web_client
+    ports:
+      - "5000:5000"
     depends_on:
       - data-server
       - train-server
