@@ -19,7 +19,7 @@ class TestingServiceServicer(test_pb2_grpc.TestingServiceServicer):
             print("Model tested successfully")
             
             # Return both RMSE and plot image binary in the response
-            return test_pb2.TestResponse(
+            return test_pb2.TestResult(
                 rmse=rmse,
                 plot=plot_image_binary
             )

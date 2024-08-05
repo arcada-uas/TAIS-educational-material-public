@@ -1,0 +1,18 @@
+{
+    "$schema": "https://raw.githubusercontent.com/acumos/license-manager/master/license-manager-client-library/src/main/resources/schema/1.0.0/license-profile.json",
+    "keyword": "Apache-2.0",
+    "licenseName": "Apache License 2.0",
+    "copyright": {
+      "year": 2024,
+      "company": "Arcada University of Applied Sciences",
+      "suffix": "All Rights Reserved"
+    },
+    "softwareType": "Machine Learning Model",
+    "companyName": "Arcada University of Applied Sciences",
+    "contact": {
+      "name": "Magnus Westerlund",
+      "URL": "https://www.arcada.fi/en",
+      "email": "magnus.westerlund@arcada.fi"
+    },
+    "rtuRequired": false
+  }

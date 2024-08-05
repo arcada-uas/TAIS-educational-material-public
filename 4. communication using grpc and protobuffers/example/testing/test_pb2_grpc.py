@@ -41,8 +41,8 @@ class TestingServiceStub(object):
         """
         self.TestModel = channel.unary_unary(
                 '/test.TestingService/TestModel',
-                request_serializer=test__pb2.TestRequest.SerializeToString,
-                response_deserializer=test__pb2.TestResponse.FromString,
+                request_serializer=test__pb2.TrainResponse.SerializeToString,
+                response_deserializer=test__pb2.TestResult.FromString,
                 _registered_method=True)
 
 
@@ -60,8 +60,8 @@ def add_TestingServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'TestModel': grpc.unary_unary_rpc_method_handler(
                     servicer.TestModel,
-                    request_deserializer=test__pb2.TestRequest.FromString,
-                    response_serializer=test__pb2.TestResponse.SerializeToString,
+                    request_deserializer=test__pb2.TrainResponse.FromString,
+                    response_serializer=test__pb2.TestResult.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -89,8 +89,8 @@ class TestingService(object):
             request,
             target,
             '/test.TestingService/TestModel',
-            test__pb2.TestRequest.SerializeToString,
-            test__pb2.TestResponse.FromString,
+            test__pb2.TrainResponse.SerializeToString,
+            test__pb2.TestResult.FromString,
             options,
             channel_credentials,
             insecure,

@@ -3,14 +3,25 @@ syntax = "proto3";
 package train;
 
 service TrainingService {
-  rpc TrainModel (TrainRequest) returns (TrainResponse);
+  rpc TrainModel (CleanedData) returns (TrainResponse);
 }
 
-message TrainRequest {
-  repeated double x_train = 1;
-  repeated double y_train = 2;
+// Response message containing cleaned data.
+message CleanedData {
+    repeated double x_train = 1;
+    repeated double y_train = 2;
+    repeated double x_test = 3;
+    repeated double y_test = 4;
+    repeated string dates_train = 5;
+    repeated string dates_test = 6;
 }
 
 message TrainResponse {
   bytes model = 1;
+  repeated double x_train = 2;
+  repeated double y_train = 3;
+  repeated double x_test = 4;
+  repeated double y_test = 5;
+  repeated string dates_train = 6;
+  repeated string dates_test = 7;
 }

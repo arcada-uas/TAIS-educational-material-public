@@ -14,17 +14,17 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntest.proto\x12\x04test\"P\n\x0bTestRequest\x12\r\n\x05model\x18\x01 \x01(\x0c\x12\x0e\n\x06x_test\x18\x02 \x03(\x01\x12\x0e\n\x06y_test\x18\x03 \x03(\x01\x12\x12\n\ndates_test\x18\x04 \x03(\t\"*\n\x0cTestResponse\x12\x0c\n\x04rmse\x18\x01 \x01(\x01\x12\x0c\n\x04plot\x18\x02 \x01(\x0c\x32\x44\n\x0eTestingService\x12\x32\n\tTestModel\x12\x11.test.TestRequest\x1a\x12.test.TestResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntest.proto\x12\x04test\"\x89\x01\n\rTrainResponse\x12\r\n\x05model\x18\x01 \x01(\x0c\x12\x0f\n\x07x_train\x18\x02 \x03(\x01\x12\x0f\n\x07y_train\x18\x03 \x03(\x01\x12\x0e\n\x06x_test\x18\x04 \x03(\x01\x12\x0e\n\x06y_test\x18\x05 \x03(\x01\x12\x13\n\x0b\x64\x61tes_train\x18\x06 \x03(\t\x12\x12\n\ndates_test\x18\x07 \x03(\t\"(\n\nTestResult\x12\x0c\n\x04rmse\x18\x01 \x01(\x01\x12\x0c\n\x04plot\x18\x02 \x01(\x0c\x32\x44\n\x0eTestingService\x12\x32\n\tTestModel\x12\x13.test.TrainResponse\x1a\x10.test.TestResultb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'test_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_TESTREQUEST']._serialized_start=20
-  _globals['_TESTREQUEST']._serialized_end=100
-  _globals['_TESTRESPONSE']._serialized_start=102
-  _globals['_TESTRESPONSE']._serialized_end=144
-  _globals['_TESTINGSERVICE']._serialized_start=146
-  _globals['_TESTINGSERVICE']._serialized_end=214
+  _globals['_TRAINRESPONSE']._serialized_start=21
+  _globals['_TRAINRESPONSE']._serialized_end=158
+  _globals['_TESTRESULT']._serialized_start=160
+  _globals['_TESTRESULT']._serialized_end=200
+  _globals['_TESTINGSERVICE']._serialized_start=202
+  _globals['_TESTINGSERVICE']._serialized_end=270
 # @@protoc_insertion_point(module_scope)
