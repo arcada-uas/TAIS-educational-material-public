@@ -3,16 +3,16 @@ syntax = "proto3";
 package data;
 
 // Request message containing CSV data as bytes.
-message DataRequest {
+message RawData {
     bytes csv_content = 1;
 }
 
 
 // Response message containing cleaned data.
-message DataResponse {
+message CleanedData {
     repeated double x_train = 1;
-    repeated double x_test = 2;
-    repeated double y_train = 3;
+    repeated double y_train = 2;
+    repeated double x_test = 3;
     repeated double y_test = 4;
     repeated string dates_train = 5;
     repeated string dates_test = 6;
@@ -22,5 +22,5 @@ message DataResponse {
 // The DataService definition.
 service DataService {
     // Sends CSV content and receives cleaned data.
-    rpc CleanData (DataRequest) returns (DataResponse);
+    rpc CleanData (RawData) returns (CleanedData);
 }

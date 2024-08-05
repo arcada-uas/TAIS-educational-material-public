@@ -148,6 +148,11 @@ def test_model():
                 return jsonify({'error': 'Model not tested'}), 500
         except grpc.RpcError as e:
             return jsonify({'error': f'RPC failed: {e.code()} - {e.details()}'}), 500
+        except Exception as e:
+            return jsonify({'error': f'An error occurred: {str(e)}'}), 500
+
+def run_flask():
+    app.run(host='0.0.0.0', port=5000)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    run_flask()

@@ -13,5 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code
 COPY . .
 
+EXPOSE 8080
+
 # Command to run the server
 CMD ["python", "data_service_server.py"]

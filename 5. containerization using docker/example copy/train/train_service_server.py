@@ -8,7 +8,7 @@ import test_pb2_grpc
 
 class TrainingServiceServicer(train_pb2_grpc.TrainingServiceServicer):
     def __init__(self):
-        self.testing_channel = grpc.insecure_channel('localhost:8082')
+        self.testing_channel = grpc.insecure_channel('test_server:8082')
         self.testing_stub = test_pb2_grpc.TestingServiceStub(self.testing_channel)
 
     def TrainModel(self, request, context):

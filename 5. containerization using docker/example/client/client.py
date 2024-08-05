@@ -22,7 +22,7 @@ def main():
         try:
             with open(csv_file_path, 'rb') as f:
                 csv_content = f.read()
-            request_data = data_pb2.DataRequest(csv_content=csv_content)
+            request_data = data_pb2.RawData(csv_content=csv_content)
             response = stub.CleanData(request_data)
             cleaned_data = {
                 'x_train': list(response.x_train),
@@ -38,12 +38,17 @@ def main():
             return
 
     # Train model
+    """
     with grpc.insecure_channel('localhost:8081') as channel:
         stub = train_pb2_grpc.TrainingServiceStub(channel)
         try:
-            response = stub.TrainModel(train_pb2.TrainRequest(
+            response = stub.TrainModel(train_pb2.CleanedData(
                 x_train=cleaned_data['x_train'],
-                y_train=cleaned_data['y_train']
+                y_train=cleaned_data['y_train'],
+                x_test=cleaned_data['x_test'],
+                y_test=cleaned_data['y_test'],
+                dates_train=cleaned_data['dates_train'],
+                dates_test=cleaned_data['dates_test']
             ))
             if response.model:
                 model_base64 = base64.b64encode(response.model).decode('utf-8')
@@ -59,10 +64,13 @@ def main():
     with grpc.insecure_channel('localhost:8082') as channel:
         stub = test_pb2_grpc.TestingServiceStub(channel)
         try:
-            response = stub.TestModel(test_pb2.TestRequest(
+            response = stub.TestModel(test_pb2.TrainResponse(
                 model=base64.b64decode(model_base64),
+                x_train = cleaned_data['x_train'],
+                y_train=cleaned_data['y_train'],
                 x_test=cleaned_data['x_test'],
                 y_test=cleaned_data['y_test'],
+                dates_train=cleaned_data['dates_train'],               
                 dates_test=cleaned_data['dates_test']
             ))
             if response.rmse:
@@ -76,6 +84,6 @@ def main():
         except grpc.RpcError as e:
             print(f"RPC failed: {e.code()} - {e.details()}")
             return
-
+"""
 if __name__ == '__main__':
     main()
