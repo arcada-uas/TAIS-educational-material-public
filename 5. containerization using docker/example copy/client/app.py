@@ -64,7 +64,7 @@ def clean_data():
         csv_content = file.read()
         
         # Use gRPC to clean the data
-        with grpc.insecure_channel('localhost:8080') as channel:
+        with grpc.insecure_channel('data-server:8080') as channel:
             stub = data_pb2_grpc.DataServiceStub(channel)
             request_data = data_pb2.RawData(csv_content=csv_content)
             response = stub.CleanData(request_data)
@@ -98,7 +98,7 @@ def train_model():
     if x_train is None or y_train is None:
         return jsonify({'error': 'Invalid input data for model training'}), 400
     
-    with grpc.insecure_channel('localhost:8081') as channel:
+    with grpc.insecure_channel('train-server:8081') as channel:
         stub = train_pb2_grpc.TrainingServiceStub(channel)
         try:
             response = stub.TrainModel(train_pb2.CleanedData(x_train=x_train, y_train=y_train, x_test=x_test, y_test=y_test, dates_train=dates_train, dates_test=dates_test))
@@ -126,7 +126,7 @@ def test_model():
     
     model_binary = base64.b64decode(model_base64)
     
-    with grpc.insecure_channel('localhost:8082') as channel:
+    with grpc.insecure_channel('test-server:8082') as channel:
         stub = test_pb2_grpc.TestingServiceStub(channel)
         try:
             response = stub.TestModel(test_pb2.TrainResponse(
