@@ -18,7 +18,6 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 # Expose the necessary ports
-EXPOSE 8061
-
+EXPOSE 8061 8062
 # Command to run the server
 CMD ["python3", "data_service_server.py"]

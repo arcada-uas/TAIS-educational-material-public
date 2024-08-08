@@ -57,7 +57,7 @@ class DataServiceServicer(data_pb2_grpc.DataServiceServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     data_pb2_grpc.add_DataServiceServicer_to_server(DataServiceServicer(), server)
-    server.add_insecure_port('[::]:8080')
+    server.add_insecure_port('0.0.0.0:8061')
     server.start()
     server.wait_for_termination()
 

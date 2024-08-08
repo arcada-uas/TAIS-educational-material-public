@@ -1,14 +1,13 @@
 import grpc
-import test_pb2_grpc
-import test_pb2
+import model_pb2_grpc
+import model_pb2
 from concurrent import futures
 import pickle
-import base64
-import test_service  # Ensure this imports the correct testing logic
+import test_service
 from threading import Thread
-from app import run_flask  # Import the Flask app's run function
+from app import run_flask 
 
-class TestingServiceServicer(test_pb2_grpc.TestingServiceServicer):
+class TestingServiceServicer(model_pb2_grpc.TestingServiceServicer):
     def TestModel(self, request, context):
         try:
             # Get the model from the binary string
@@ -21,7 +20,7 @@ class TestingServiceServicer(test_pb2_grpc.TestingServiceServicer):
             print("Model tested successfully")
             
             # Return both RMSE and plot image binary in the response
-            return test_pb2.TestResult(
+            return model_pb2.TestResult(
                 rmse=rmse,
                 plot=plot_image_binary
             )
@@ -30,20 +29,21 @@ class TestingServiceServicer(test_pb2_grpc.TestingServiceServicer):
             print("Error testing model")
             context.set_code(grpc.StatusCode.INTERNAL)
             context.set_details(f"Internal error: {str(e)}")
-            return test_pb2.TestResult()  # Return an empty response in case of error
+            return model_pb2.TestResult() 
 
-def serve_grpc():
+def run_app():
+    run_flask()
+
+def serve():
+    flask_thread = Thread(target=run_app)
+    flask_thread.start()
+
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    test_pb2_grpc.add_TestingServiceServicer_to_server(TestingServiceServicer(), server)
+    model_pb2_grpc.add_TestingServiceServicer_to_server(TestingServiceServicer(), server)
     server.add_insecure_port('0.0.0.0:8061')
     server.start()
     print("Testing service server started on port 8061.")
     server.wait_for_termination()
 
 if __name__ == '__main__':
-    # Start gRPC server in a separate thread
-    grpc_thread = Thread(target=serve_grpc)
-    grpc_thread.start()
-    
-    # Start Flask app in the main thread
-    run_flask()
+    serve()
