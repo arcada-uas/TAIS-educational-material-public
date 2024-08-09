@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   data-server:
     build: 
@@ -7,7 +5,7 @@ services:
       dockerfile: Dockerfile
     image: data_server
     ports:
-      - "8061:8061"
+      - "8080:8080"
     networks:
       - example-network
   
@@ -17,7 +15,7 @@ services:
       dockerfile: Dockerfile
     image: train_server
     ports:
-      - "8061:8061"
+      - "8081:8081"
     networks:
       - example-network
   
@@ -27,11 +25,20 @@ services:
       dockerfile: Dockerfile
     image: test_server
     ports:
-      - "8062:8062"
-      - "8061:8061"
+      - "8082:8082"
+    networks:
+      - example-network
+  
+  web-client:
+    build: 
+      context: ./client
+    image: web_client
+    ports:
+      - "5000:5000"
     depends_on:
       - data-server
       - train-server
+      - test-server
     networks:
       - example-network
 

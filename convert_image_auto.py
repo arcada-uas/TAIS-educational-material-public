@@ -3,7 +3,8 @@ import base64
 import os
 
 # Load the Jupyter Notebook JSON file
-notebook_path = r'5. containerization using docker\5.2 containerizing our components.ipynb'
+
+notebook_path = r'creating-ML-pipeline-components\1. Introduction\4. Preparing the environment.ipynb'
 
 with open(notebook_path, 'r', encoding='utf-8') as f:
     notebook_json = json.load(f)

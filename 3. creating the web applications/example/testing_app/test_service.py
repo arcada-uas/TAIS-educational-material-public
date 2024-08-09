@@ -13,6 +13,12 @@ def test_model(model, x_test, y_test, dates_test):
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     print(f"RMSE: {rmse}")
 
+    
+    rmse_file = 'rmse_value.txt'
+    with open(rmse_file, 'w') as f:
+        f.write(f"{rmse:.4f}")
+
+
     # Create a BytesIO object to save the plot in-memory
     plot_stream = io.BytesIO()
 
@@ -32,6 +38,9 @@ def test_model(model, x_test, y_test, dates_test):
     plt.title('MSFT Stock Price Prediction')
     plt.legend()
     plt.grid(True)
+
+    plot_file = 'model_plot.png'
+    plt.savefig(plot_file)
 
     # Save the plot to the BytesIO object
     plt.savefig(plot_stream, format='png')
