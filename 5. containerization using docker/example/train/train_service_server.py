@@ -4,15 +4,20 @@ import model_pb2
 from training_service import train_model
 import logging
 from concurrent import futures
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='[%(asctime)s] %(levelname)s: %(message)s',
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
 
 class TrainingServiceServicer(model_pb2_grpc.TrainingServiceServicer):
-    def __init__(self):
-        #self.testing_channel = grpc.insecure_channel('test_server:8061')
-        #self.testing_stub = test_pb2_grpc.TestingServiceStub(self.testing_channel)
-        pass
-
     def TrainModel(self, request, context):
         try:
+            logging.info("Training model...")
             # Train model
             x_train = request.x_train
             y_train = request.y_train
@@ -30,7 +35,7 @@ class TrainingServiceServicer(model_pb2_grpc.TrainingServiceServicer):
                 dates_test=request.dates_test
             )
             
-            #self.testing_stub.TestModel(test_request)
+            logging.info("Model tested successfully")
 
             return model_pb2.TrainResponse(
                 model=model_binary,
@@ -52,9 +57,10 @@ class TrainingServiceServicer(model_pb2_grpc.TrainingServiceServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     model_pb2_grpc.add_TrainingServiceServicer_to_server(TrainingServiceServicer(), server)
-    server.add_insecure_port('0.0.0.0:8061')
+    port = 8061
+    server.add_insecure_port('[::]:{}'.format(port))
     server.start()
-    print("Training service server started on port 8061.")
+    logging.info("Training service server started on port 8061.")
     server.wait_for_termination()
 
 if __name__ == '__main__':

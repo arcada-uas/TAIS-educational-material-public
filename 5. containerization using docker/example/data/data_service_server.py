@@ -7,12 +7,22 @@ import io
 import os
 from app import run_app
 import threading
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='[%(asctime)s] %(levelname)s: %(message)s',
+    handlers=[
+        logging.StreamHandler()  # Output to the console
+    ]
+)
 
 class DataServiceServicer(model_pb2_grpc.DataServiceServicer):
     def __init__(self):
         self.dataset_filepath = 'uploaded_file.csv'
 
     def CleanData(self, request, context):
+        logging.info("Cleaning data...")
         try:
 
             if not os.path.isfile(self.dataset_filepath):
@@ -36,6 +46,7 @@ class DataServiceServicer(model_pb2_grpc.DataServiceServicer):
             )
             
             # Return cleaned data along with the result of training
+            logging.info("Data cleaned successfully.")
             return response
         
         except Exception as e:
@@ -47,13 +58,13 @@ def start_flask_app():
     run_app()
 
 def serve():
-    flask_thread = threading.Thread(target=start_flask_app)
-    flask_thread.start()
-
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     model_pb2_grpc.add_DataServiceServicer_to_server(DataServiceServicer(), server)
-    server.add_insecure_port('0.0.0.0:8061')
+    port = 8061
+    server.add_insecure_port('[::]:{}'.format(port))
     server.start()
+    logging.info("Data service server started on port 8061.")
+    threading.Thread(target=start_flask_app).start()
     server.wait_for_termination()
 
 if __name__ == '__main__':
