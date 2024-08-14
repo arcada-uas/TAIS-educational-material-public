@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  data-server:
+    build: 
+      context: ./data
+      dockerfile: Dockerfile
+    image: data_server
+    ports:
+      - "8061:8061"
+    networks:
+      - example-network
+  
+  train-server:
+    build: 
+      context: ./train
+      dockerfile: Dockerfile
+    image: train_server
+    ports:
+      - "8061:8061"
+    networks:
+      - example-network
+  
+  test-server:
+    build: 
+      context: ./testing
+      dockerfile: Dockerfile
+    image: test_server
+    ports:
+      - "8062:8062"
+      - "8061:8061"
+    depends_on:
+      - data-server
+      - train-server
+    networks:
+      - example-network
+
+networks:
+  example-network:
+    driver: bridge
