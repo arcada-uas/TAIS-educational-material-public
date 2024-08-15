@@ -4,8 +4,6 @@ import model_pb2
 from concurrent import futures
 import pickle
 import test_service
-from threading import Thread
-from app import run_flask 
 import logging
 
 logging.basicConfig(
@@ -41,8 +39,6 @@ class TestingServiceServicer(model_pb2_grpc.TestingServiceServicer):
             context.set_details(f"Internal error: {str(e)}")
             return model_pb2.TestResult() 
 
-def run_app():
-    run_flask()
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
@@ -51,7 +47,6 @@ def serve():
     server.add_insecure_port('[::]:{}'.format(port))
     server.start()
     logging.info("Testing service server started on port 8061.")
-    #flask_thread = Thread(target=run_app).start()
     server.wait_for_termination()
 
 

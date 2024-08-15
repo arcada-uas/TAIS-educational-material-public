@@ -54,8 +54,6 @@ class DataServiceServicer(model_pb2_grpc.DataServiceServicer):
             context.set_details(f"Internal error: {str(e)}")
             return model_pb2.CleanedData()
 
-def start_flask_app():
-    run_app()
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
@@ -64,7 +62,7 @@ def serve():
     server.add_insecure_port('[::]:{}'.format(port))
     server.start()
     logging.info("Data service server started on port 8061.")
-    threading.Thread(target=start_flask_app).start()
+    threading.Thread(target=run_app).start()
     server.wait_for_termination()
 
 if __name__ == '__main__':
