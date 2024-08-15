@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+
+message Empty {
+
+}
+
+message CleanedData {
+    repeated double x_train = 1;
+    repeated double y_train = 2;
+    repeated double x_test = 3;
+    repeated double y_test = 4;
+    repeated string dates_train = 5;
+    repeated string dates_test = 6;
+}
+
+
+service DataService {
+    rpc CleanData (Empty) returns (CleanedData);
+}
