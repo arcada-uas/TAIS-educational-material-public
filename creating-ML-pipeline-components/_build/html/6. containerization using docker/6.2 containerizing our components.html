@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Containerizing our components &#8212; Learning to create ML pipeline components</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '6. containerization using docker/6.2 containerizing our components';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Learning to create ML pipeline components - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Learning to create ML pipeline components - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Building components for ML pipelines!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Beginning of creating a pipeline</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/2.1%20first%20steps%20to%20creating%20a%20pipeline.html">First Steps in Creating a Machine Learning Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/Stock_Price_Prediction.html">Stock Price Prediction Example Pipeline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3. Creating the services and web applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Creating%20the%20services%20and%20web%20applications/3.1.%20Creating%20a%20component%20example.html">Creating the Services and Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Creating%20the%20services%20and%20web%20applications/conclusion.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4. Communication using grpc and protobuffers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Communication%20using%20grpc%20and%20protobuffers/4.0%20introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Communication%20using%20grpc%20and%20protobuffers/4.1.%20Protocol%20buffers.html">Protocol Buffers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Communication%20using%20grpc%20and%20protobuffers/4.2%20gRPC%20and%20protocol%20buffers.html">gRPC and Protocol Buffers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Communication%20using%20grpc%20and%20protobuffers/4.3%20grpc%20example.html">Configuring Components for gRPC Communication</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7. Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../end.html">Ending</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/arcada-uas/TAIS-educational-material-public" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/arcada-uas/TAIS-educational-material-public/issues/new?title=Issue%20on%20page%20%2F6. containerization using docker/6.2 containerizing our components.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/6. containerization using docker/6.2 containerizing our components.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Containerizing our components</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-the-dockerfiles">Writing the Dockerfiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-container">Testing the Container</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensuring-docker-daemon-is-running">Ensuring Docker Daemon is Running</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">macOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-and-running-your-container">Building and running your container</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-to-dockerhub">Pushing to dockerhub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="containerizing-our-components">
+<h1>Containerizing our components<a class="headerlink" href="#containerizing-our-components" title="Link to this heading">#</a></h1>
+<p>Having developed all the services in our pipeline, including the gRPC servers and optional web applications, we are now prepared to containerize these components. Containerization involves creating Dockerfiles for each component to encapsulate and deploy them effectively.</p>
+<section id="writing-the-dockerfiles">
+<h2>Writing the Dockerfiles<a class="headerlink" href="#writing-the-dockerfiles" title="Link to this heading">#</a></h2>
+<p>Dockerfiles for each component share a common structure. We will focus on the Dockerfile for the data component, which illustrates the general approach applicable to other components. The Dockerfile should include the following six elements:</p>
+<ol class="arabic simple">
+<li><p>Define the base image.</p></li>
+<li><p>Set the working directory.</p></li>
+<li><p>Copy the requirements.txt file into the container.</p></li>
+<li><p>Install the dependencies.</p></li>
+<li><p>Copy the application code into the container.</p></li>
+<li><p>Define the command for running the application.</p></li>
+</ol>
+<p>Each Dockerfile needs to ensure that all necessary files and dependencies are present within the container. By organizing our code into separate folders for each component, we streamline this process by copying the entire folder contents into the container.</p>
+<ol class="arabic">
+<li><p>Define the base image</p>
+<p>In a Dockerfile, the base image is the image from which your Docker image is built. This base image is specified using the FROM instruction at the beginning of the Dockerfile and serves as the starting point for building your custom image. The base image typically includes a minimal operating system and any necessary pre-installed software, libraries, or dependencies that your application needs to run. In our case we use:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:22.04</span>
+</pre></div>
+</div>
+</li>
+<li><p>Set the working directory</p>
+<p>Setting the working directory in a Dockerfile using the WORKDIR instruction specifies the directory within the Docker container where commands will be executed. It essentially sets the context for any subsequent instructions in the Dockerfile, such as COPY, RUN, and CMD. By setting a working directory, you ensure that the application files and operations are organized within a specific path inside the container. This helps maintain a clean and predictable environment for running your application.</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+</pre></div>
+</div>
+</li>
+<li><p>Update the package list and install required packages</p>
+<p>Before installing Python dependencies, it’s necessary to ensure that the container has access to the latest package lists and necessary tools. The RUN instruction does this by performing the following:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-pip<span class="w"> </span>python3-dev<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>apt-get update -y: This command updates the package list from the repositories, ensuring that the container has access to the most recent versions of packages available in the Ubuntu repositories. The -y flag automatically answers ‘yes’ to any prompts, allowing the command to run non-interactively.</p></li>
+<li><p>apt-get install -y python3-pip python3-dev: This command installs essential packages needed for the Python environment:</p>
+<ul>
+<li><p>python3-pip: The package manager for Python, which allows for easy installation of Python packages.</p></li>
+<li><p>python3-dev: Contains the header files and a static library for Python, which are often required to compile Python packages from source.</p></li>
+</ul>
+</li>
+<li><p>pip3 install –upgrade pip: This command ensures that pip is updated to the latest version, which helps avoid issues related to outdated package management.</p></li>
+</ul>
+<p>This step is crucial for preparing the environment in the container before the Python dependencies are installed.</p>
+</li>
+<li><p>copy the requirements.txt file into the container</p>
+<p>Copying the requirements.txt file into the Docker image is essential for ensuring that all necessary Python dependencies are installed in the container. This practice enables the pip install -r requirements.txt command to install the specified libraries and packages, creating a consistent environment for your application.</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">COPY</span><span class="w"> </span>./requirements.txt<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>install the dependencies</p>
+<p>This is done for the same reasons listed in the previous step.</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</li>
+<li><p>copy the application code into the container</p>
+<p>Copying the code into the container using the command COPY . . ensures that your application code is included in the Docker image, allowing the container to execute the application. This command copies all files from the current directory on the host machine to the working directory inside the container. The dockerfile will be placed inside of the data folder, and therefor the first “.” corresponds to the data folder and all it’s contents. The second “.” referes to the working directory inside the container.</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Expose necessary ports
+The EXPOSE instruction informs Docker that the container listens on specific network ports at runtime. This command specifies that the container will listen on ports 8061 and 8062.</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">EXPOSE</span><span class="w"> </span><span class="s">8061 8062</span>
+</pre></div>
+</div>
+</li>
+<li><p>define the command for running the application</p>
+<p>We need to specify the default command to run when the container starts. This command is essential for defining the container’s primary process, ensuring that when the container is initiated, it automatically runs your application.</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data_service_server.py&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Combining all the steps, the Dockerfile for the data component is:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:22.04</span>
+
+<span class="c"># Set the working directory inside the container</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="c"># Update the package list and install required packages</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-pip<span class="w"> </span>python3-dev<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+
+<span class="c"># Copy requirements.txt first to leverage Docker cache</span>
+<span class="k">COPY</span><span class="w"> </span>./requirements.txt<span class="w"> </span>.
+
+<span class="c"># Install Python dependencies</span>
+<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c"># Copy the rest of the application code</span>
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+
+<span class="c"># Expose the necessary ports</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8061 8062</span>
+
+<span class="c"># Command to run the server</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data_service_server.py&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For other components, the Dockerfiles will largely follow this structure. The primary modification will be in the command specified in the CMD instruction to match the entry point script for each respective component.</p>
+</section>
+<section id="testing-the-container">
+<h2>Testing the Container<a class="headerlink" href="#testing-the-container" title="Link to this heading">#</a></h2>
+<p>Once you have written your Dockerfile, it is crucial to test the container to ensure that it functions as expected. Testing the container involves running it, verifying that the server and web application start correctly, and ensuring that all necessary services are accessible. The following steps outline the process for testing your containerized application.</p>
+<p>Before proceeding, ensure that the Docker daemon is running on your system. The Docker daemon must be active for Docker commands to function properly. Below are instructions for verifying and starting the Docker daemon on Windows, Linux, and macOS.</p>
+<section id="ensuring-docker-daemon-is-running">
+<h3>Ensuring Docker Daemon is Running<a class="headerlink" href="#ensuring-docker-daemon-is-running" title="Link to this heading">#</a></h3>
+<section id="windows">
+<h4>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Verify Docker Daemon: Check if Docker is running by looking for the Docker icon in the system tray. If the icon is present, Docker is likely running.</p></li>
+<li><p>Start Docker Daemon:</p>
+<ul class="simple">
+<li><p>Open Docker Desktop from the Start Menu.
+If Docker Desktop is not running, click on its icon to start it. Docker Desktop will handle the activation of the Docker daemon.</p></li>
+<li><p>Wait for Docker Desktop to indicate that it is running and ready.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="linux">
+<h4>Linux<a class="headerlink" href="#linux" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p>Verify Docker Daemon: Use the following command to check if the Docker daemon is running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker
+</pre></div>
+</div>
+<p>If the daemon is active, you will see “active (running)” in the output.</p>
+</li>
+<li><p>Start Docker Daemon:</p></li>
+</ol>
+<ul>
+<li><p>If Docker is not running, start it using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
+</pre></div>
+</div>
+</li>
+<li><p>To enable Docker to start automatically at boot:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="macos">
+<h4>macOS<a class="headerlink" href="#macos" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Verify Docker Daemon: Check for the Docker icon in the menu bar at the top of your screen. If the icon is present, Docker is likely running.</p></li>
+<li><p>Start Docker Daemon:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Open Docker Desktop from the Applications folder or by using Spotlight search.</p></li>
+<li><p>If Docker Desktop is not running, click on its icon to start it. Docker Desktop will automatically manage the Docker daemon.
+Wait for Docker Desktop to indicate that it is operational.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="building-and-running-your-container">
+<h2>Building and running your container<a class="headerlink" href="#building-and-running-your-container" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Build the Docker Image
+Before testing, you need to build the Docker image from the Dockerfile. Navigate to the directory containing your Dockerfile and execute the following command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;repository&gt;/&lt;image-name&gt;:&lt;tag&gt;<span class="w"> </span>.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>-t <repository>/<image-name>:<tag>:</p>
+<ul>
+<li><p><repository>: This is the name of your Docker repository. If you plan to push the image to a registry like Docker Hub or a private registry, this is where you would specify the repository name. If you’re building the image locally and don’t plan to push it, you can omit the repository part.</p>
+<ul>
+<li><p>Docker Hub Username as Repository: Since the goal is to push the image to Docker Hub, it is a best practice to use your Docker Hub username as the <repository> name. This is because Docker Hub organizes images under usernames, and other users can pull images using the username/image-name:tag format.</p></li>
+</ul>
+</li>
+<li><p><image-name>: This is the name you assign to your Docker image. Choose a meaningful name that reflects the purpose of the image.</p></li>
+<li><p><tag>: Tags are used to version your Docker image. Commonly, tags like latest, v1.0, or stable are used to indicate the version of the image. For example, you might tag the image as v1.0 if it is the first stable release.</p>
+<ul>
+<li><p>It is a good idea to define a specific tag number instead of using “latest”. Later, if you need to update the code and redeploy, specify a new tag to ensure the updated code gets pulled when deploying.</p></li>
+</ul>
+</li>
+<li><p>.: The dot at the end specifies the build context, which is typically the current directory. It tells Docker to look for the Dockerfile and the necessary application files in this directory.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>After the build completes successfully, you can list your Docker images using the following command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>images
+</pre></div>
+</div>
+<p>This will display a list of images, including the one you just built.</p>
+<ol class="arabic" start="3">
+<li><p>Run the Docker Container
+Once the image is built, you can run a container from this image using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8061</span>:8061<span class="w"> </span>-p<span class="w"> </span><span class="m">8062</span>:8062<span class="w"> </span>--name<span class="w"> </span>your-container-name<span class="w"> </span>&lt;repository&gt;/&lt;image-name&gt;:&lt;tag&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>d: Runs the container in detached mode, meaning it will run in the background.</p></li>
+<li><p>p 8061:8061 -p 8062:8062: Maps the container ports 8061 and 8062 to the ports 8061 and 8062 of the host machine, allowing access to services running inside the container.</p></li>
+<li><p>–name your-container-name: Assigns a name to the container for easier management. Replace your-container-name with a descriptive name for the container.</p></li>
+<li><p><repository>/<image-name>:<tag>: Refers to the image you just built. Ensure you use the correct repository, image name, and tag.
+To check that both the server and the applications got started successfully you can check the logs.</p></li>
+</ul>
+</li>
+<li><p>Checking Logs
+To check that the server and application got started successfully or to diagnose any potential issues, you can inspect the logs of the container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>logs<span class="w"> </span>your-container-name
+</pre></div>
+</div>
+<p>This command displays the logs generated by the container, providing insight into the application’s and server’s runtime behavior.</p>
+</li>
+<li><p>Accessing the Services
+You can use curl, a web browser, or a tool like Postman to interact with the web application running inside the container.
+For example, since the application is a web service running on port 8061, you can test it by visiting <a class="reference external" href="http://127.0.0.1:8062/">http://127.0.0.1:8062/</a></p>
+<p>To test the server you can run the client defined in the previous chapter using the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>data_client.py
+</pre></div>
+</div>
+</li>
+<li><p>Stop and Remove the Container
+Once you have completed testing, you should stop and remove the container to free up resources:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>stop<span class="w"> </span>your-container-name
+docker<span class="w"> </span>rm<span class="w"> </span>your-container-name
+</pre></div>
+</div>
+<p>docker stop: Stops the running container.
+docker rm: Removes the container from the list of containers.
+If you no longer need the Docker image you built, you can also remove it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>rmi<span class="w"> </span>&lt;repository&gt;/&lt;image-name&gt;:&lt;tag&gt;
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="pushing-to-dockerhub">
+<h2>Pushing to dockerhub<a class="headerlink" href="#pushing-to-dockerhub" title="Link to this heading">#</a></h2>
+<p>With the data component successfully containerized and tested, it can be pushed to dockerhub.</p>
+<p>Certainly! Here is a paragraph explaining how to push a Docker image to Docker Hub for the first time:</p>
+<p>To push a Docker image to Docker Hub, begin by ensuring that you are logged into your Docker Hub account from the command line. If you do not have an account, make sure to create one firts. Once you have an account, use the command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">login</span></code> and enter your Docker Hub credentials when prompted. Once authenticated, use the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">push</span></code> command to upload the image, as in <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">push</span> <span class="pre">myusername/my_image:tag</span></code>. This will push your Docker image to your specified Docker Hub repository, making it accessible for deployment or sharing with others. Ensure that you replace myusername and my_image with your Docker Hub username and the appropriate image name, respectively.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>With the data component successfully containerized, tested and pushed to docker hub, the next step is to repeat this process for the remaining components of the pipeline. You should containerize the other two components, ensuring that each is correctly configured, and then thoroughly test them in a similar manner. At this stage, with all necessary parts containerized, tested and pushed, you are ready to move on to the final phase: deployment.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./6. containerization using docker"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-the-dockerfiles">Writing the Dockerfiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-container">Testing the Container</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensuring-docker-daemon-is-running">Ensuring Docker Daemon is Running</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">macOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-and-running-your-container">Building and running your container</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-to-dockerhub">Pushing to dockerhub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lotta Hannelius
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
