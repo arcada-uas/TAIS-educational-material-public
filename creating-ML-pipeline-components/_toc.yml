@@ -43,7 +43,7 @@ parts:
       - file: "6. deployment/Deployment using the playgroundapp.ipynb"
   - caption: "7. Conclusion"
     chapters:
-      - file: end.ipynb
+      - file: Conclusion.ipynb
 
 
   
