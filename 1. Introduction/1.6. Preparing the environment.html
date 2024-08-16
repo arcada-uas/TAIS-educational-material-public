@@ -423,6 +423,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-git">Step 1: Install Git</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-visual-studio-code">Step 2: Install Visual Studio Code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-a-github-account">Step 3: Set Up a GitHub Account</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-own-repository-from-template-repository">Create own repository from template repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-the-template-repository">Step 1: Navigate to the Template Repository</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-your-own-repository-from-the-template">Step 2: Create Your Own Repository from the Template</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-configure-your-new-repository">Step 3: Configure Your New Repository</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-clone-the-repository-and-open-it-in-vs-code">Step 4: Clone the Repository and Open it in VS Code</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-git-cli">Using Git CLI:</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-visual-studio-code-gui">Using Visual Studio Code GUI:</a></li>
@@ -488,6 +494,38 @@ document.write(`
 <li><p>Sign up for GitHub at <a class="reference external" href="https://github.com/">github.com</a>.</p></li>
 </ul>
 </section>
+<section id="create-own-repository-from-template-repository">
+<h3>Create own repository from template repository<a class="headerlink" href="#create-own-repository-from-template-repository" title="Link to this heading">#</a></h3>
+<p>When you want to create a new repository based on an existing template repository, GitHub makes it easy with its “Use this template” feature. This allows you to create a new repository that starts with the same files and structure as the template repository, enabling you to quickly kickstart your project.</p>
+<section id="step-1-navigate-to-the-template-repository">
+<h4>Step 1: Navigate to the Template Repository<a class="headerlink" href="#step-1-navigate-to-the-template-repository" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>First, visit the template repository on GitHub. You can find the repository through the github icon on the top right corner of this website or at the address <a class="github reference external" href="https://github.com/arcada-uas/TAIS-educational-material-public">arcada-uas/TAIS-educational-material-public</a> .</p></li>
+</ul>
+</section>
+<section id="step-2-create-your-own-repository-from-the-template">
+<h4>Step 2: Create Your Own Repository from the Template<a class="headerlink" href="#step-2-create-your-own-repository-from-the-template" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Once you’re on the template repository page, look for the green button labeled “Use this template” near the top of the repository page.</p></li>
+<li><p>Click on “Create new repository” and you will be redirected to a new page where you can create your own repository based on the template.</p></li>
+</ul>
+</section>
+<section id="step-3-configure-your-new-repository">
+<h4>Step 3: Configure Your New Repository<a class="headerlink" href="#step-3-configure-your-new-repository" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>On the “Create a new repository” page, fill in the following details:</p>
+<ul>
+<li><p><strong>Include all branches:</strong> Leave this unchecked</p></li>
+<li><p><strong>Repository Name:</strong> Choose a name for your new repository.</p></li>
+<li><p><strong>Description:</strong> Optionally, provide a description of your repository.</p></li>
+<li><p><strong>Public/Private:</strong> Decide whether your repository should be public or private.</p></li>
+</ul>
+</li>
+<li><p>Once you’ve configured your new repository, click the “Create repository from template” button at the bottom of the page.</p></li>
+</ul>
+<p>Your new repository will be created, containing all the files and structure from the template. You can now clone this repository to your local machine and start working on it.</p>
+</section>
+</section>
 <section id="step-4-clone-the-repository-and-open-it-in-vs-code">
 <h3>Step 4: Clone the Repository and Open it in VS Code<a class="headerlink" href="#step-4-clone-the-repository-and-open-it-in-vs-code" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -499,7 +537,7 @@ document.write(`
 <ul>
 <li><p>Open a terminal and navigate to the directory where you want to place the cloned repository.</p></li>
 <li><p>Run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/arcada-uas/TAIS-educational-material-public.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>&lt;address<span class="w"> </span>of<span class="w"> </span>your<span class="w"> </span>repository&gt;
 </pre></div>
 </div>
 </li>
@@ -661,6 +699,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-git">Step 1: Install Git</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-visual-studio-code">Step 2: Install Visual Studio Code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-a-github-account">Step 3: Set Up a GitHub Account</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-own-repository-from-template-repository">Create own repository from template repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-the-template-repository">Step 1: Navigate to the Template Repository</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-your-own-repository-from-the-template">Step 2: Create Your Own Repository from the Template</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-configure-your-new-repository">Step 3: Configure Your New Repository</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-clone-the-repository-and-open-it-in-vs-code">Step 4: Clone the Repository and Open it in VS Code</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-git-cli">Using Git CLI:</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-visual-studio-code-gui">Using Visual Studio Code GUI:</a></li>
