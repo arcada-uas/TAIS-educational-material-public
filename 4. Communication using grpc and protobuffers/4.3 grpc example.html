@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Configuring the components to communicate using gRPC &#8212; Learning to create ML pipeline components</title>
+    <title>Configuring Components for gRPC Communication &#8212; Learning to create ML pipeline components</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -60,7 +60,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '4. Communication using grpc and protobuffers/4.3 grpc example';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Containerization" href="../5.%20containerization%20using%20docker/5.1.%20containerization%20and%20Docker.html" />
     <link rel="prev" title="gRPC and Protocol Buffers" href="4.2%20gRPC%20and%20protocol%20buffers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -179,46 +178,22 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">1. Introduction</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Beginning of creating a pipeline</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/1.%20introduction%20to%20the%20project.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/2.%20Pipeline%20outline.html">Creating a Pipeline</a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/3.%20general%20instructions%20for%20creating%20a%20component.html">Creating a component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.%20Introduction/4.%20Preparing%20the%20environment.html">Preparing the environment</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Beginning of creating a pipeline</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/2.1%20first%20steps%20to%20creating%20a%20pipeline.html">First steps of creatng a pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/2.1%20first%20steps%20to%20creating%20a%20pipeline.html">First Steps in Creating a Machine Learning Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2.%20Beginning%20of%20creating%20a%20pipeline/Stock_Price_Prediction.html">Stock Price Prediction Example Pipeline</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3. Creating the services and web applications</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3.%20Creating%20the%20services%20and%20web%20applications/3.1.%20Creating%20a%20component%20example.html">Creating the services and testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.%20Creating%20the%20services%20and%20web%20applications/conclusion.html">Creating the Web Applications: Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Creating%20the%20services%20and%20web%20applications/3.1.%20Creating%20a%20component%20example.html">Creating the Services and Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Creating%20the%20services%20and%20web%20applications/conclusion.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4. Communication using grpc and protobuffers</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="4.0%20introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4.1.%20Protocol%20buffers.html">Protocol buffers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4.1.%20Protocol%20buffers.html">Protocol Buffers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4.2%20gRPC%20and%20protocol%20buffers.html">gRPC and Protocol Buffers</a></li>
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Configuring the components to communicate using gRPC</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">5. Containerization using Docker</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5.%20containerization%20using%20docker/5.1.%20containerization%20and%20Docker.html">Containerization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.%20containerization%20using%20docker/5.2%20containerizing%20our%20components.html">Containerizing our components</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">6. Deployment</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6.%20deployment/6.1.%20Introduction%20to%20Kubernetes.html">Introduction to the software stack</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.%20deployment/Deployment%20using%20the%20playgroundapp.html">Local deployment using the playground app</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Configuring Components for gRPC Communication</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7. Conclusion</span></p>
 <ul class="nav bd-sidenav">
@@ -408,7 +383,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Configuring the components to communicate using gRPC</h1>
+    <h1>Configuring Components for gRPC Communication</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -418,12 +393,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-protofile">Creating the protofile</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-the-grpc-code">Generating the grpc code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-server">Creating the server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-client">Creating the client</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-common-web-application-client">Creating a common web application client</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-protofile">Creating the Protofile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-the-grpc-code">Generating the gRPC Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-server">Creating the Server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-client-for-testing">Creating the Client for Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-additional-servers">Defining Additional Servers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -435,275 +410,199 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="configuring-the-components-to-communicate-using-grpc">
-<h1>Configuring the components to communicate using gRPC<a class="headerlink" href="#configuring-the-components-to-communicate-using-grpc" title="Link to this heading">#</a></h1>
-<p>Now that we have a bit more knowledge about gRPC and protobuffers, we can configure the services we have defined previously to utilize grpc for communication. The steps necessary to take before you can use grpc for communication are the following:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="configuring-components-for-grpc-communication">
+<h1>Configuring Components for gRPC Communication<a class="headerlink" href="#configuring-components-for-grpc-communication" title="Link to this heading">#</a></h1>
+<p>With a foundational understanding of gRPC and Protocol Buffers, we can now proceed to configure the previously defined services to leverage gRPC for inter-component communication. It is important to note that while the AI on Demand platform will manage the communication between components during deployment, our responsibility lies in creating gRPC servers for each component and ensuring that the necessary functions are correctly implemented and operational.</p>
+<p>The following steps outline the process of preparing the services for gRPC communication:</p>
 <ol class="arabic simple">
-<li><p>Define the service</p></li>
-<li><p>write the protofile</p></li>
-<li><p>generate gRPC code</p></li>
-<li><p>Implement client and server using the generated gRPC code</p></li>
+<li><p><strong>Define the Service</strong></p></li>
+<li><p><strong>Write the Protofile</strong></p></li>
+<li><p><strong>Generate gRPC Code</strong></p></li>
+<li><p><strong>Implement the Server Using the Generated gRPC Code</strong></p></li>
+<li><p><strong>Create a Client Using the Generated gRPC Code to Test the Server</strong></p></li>
 </ol>
-<p>We have already defined the services in the previous chapter, so we can move onto writing the protofile. Let’s copy over the service files from the previous chapter! You can find the service code in the sub folders inside the example folder in the folder named “4. communication using grpc and protobuffers” in the github repository. We will explain the process of creating the grpc server and client only for the data component. The process is however quite similar for all the different components, once you understand the necessary steps and their purposes.</p>
+<p>Since the services were defined in the previous chapter, we can proceed directly to writing the protofile. The service code is located in the <code class="docutils literal notranslate"><span class="pre">4.</span> <span class="pre">Communication</span> <span class="pre">using</span> <span class="pre">gRPC</span> <span class="pre">and</span> <span class="pre">Protocol</span> <span class="pre">Buffers\example</span></code> directory of the GitHub repository. While this guide will demonstrate the process for the data component, the steps apply to all components once the underlying concepts are understood.</p>
 <section id="creating-the-protofile">
-<h2>Creating the protofile<a class="headerlink" href="#creating-the-protofile" title="Link to this heading">#</a></h2>
-<p>To define the protofile we need to consider what data will be passed between the server and the client. We want the data server to receive a csv file, and this can be done in a few different ways, either as a string or as binary data. For this example we have chosen binary data, so we know that we need one message type for this. The function returns six different lists, the training and testing lists for the variables x, y and dates, so we also need to define a message type that can hold the lists. Here is an example of how to define these messages:</p>
+<h2>Creating the Protofile<a class="headerlink" href="#creating-the-protofile" title="Link to this heading">#</a></h2>
+<p>When defining the protofile, consider the data that needs to be exchanged between the components. For instance, in our pipeline, the first component must accept an empty message as input, a requirement when using the AI on Demand platform. Therefore, we need to define an empty message. Additionally, the component must return six distinct lists: the training and testing datasets for variables <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">dates</span></code>. Consequently, we need to define a message type that can encapsulate these lists. Below is an example of how these messages might be defined:</p>
 <div class="highlight-proto notranslate"><div class="highlight"><pre><span></span><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
 
-<span class="kn">package</span><span class="w"> </span><span class="nn">data</span><span class="p">;</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">Empty</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="c1">// Request message containing CSV data as bytes.</span>
-<span class="kd">message</span><span class="w"> </span><span class="nc">DataRequest</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">bytes</span><span class="w"> </span><span class="na">csv_content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-<span class="c1">// Response message containing cleaned data.</span>
-<span class="kd">message</span><span class="w"> </span><span class="nc">DataResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">message</span><span class="w"> </span><span class="nc">CleanedData</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="na">x_train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="na">x_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="na">y_train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="na">y_train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="na">x_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="na">y_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">dates_train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 <span class="w">    </span><span class="k">repeated</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">dates_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-</div>
-<p>Notice that the keyword “repeated” has been used when the datatype is a list.</p>
-<p>Once we have defined the messages, we can use them to define the service provided by our grpc server. When defining the service we need to specify which rpc methods will be available on the server. In our case we only have one function, the CleanData function. Therefore we define our data service with one rpc function, CleanData, which should take a DataRequest message defined above as input, and return a DataResponse message. Below is an example of how to define the service.</p>
-<div class="highlight-proto notranslate"><div class="highlight"><pre><span></span><span class="c1">// The DataService definition.</span>
+
+<span class="n">In</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">example</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">repeated</span><span class="w"> </span><span class="n">keyword</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">denote</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="n">contains</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">list.</span>
+<span class="n">Once</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">defined</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">proceed</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">define</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="kd">service</span><span class="w"> </span><span class="n">provided</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">our</span><span class="w"> </span><span class="n">gRPC</span><span class="w"> </span><span class="n">server.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">involves</span><span class="w"> </span><span class="n">specifying</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">RPC</span><span class="w"> </span><span class="n">methods</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">server.</span><span class="w"> </span><span class="n">In</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">case</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">function</span><span class="p">,</span><span class="w"> </span><span class="n">clean_data</span><span class="p">,</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">define</span><span class="w"> </span><span class="n">our</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="kd">service</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="n">RPC</span><span class="w"> </span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">CleanData</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">takes</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">Empty</span><span class="w"> </span><span class="kd">message</span><span class="w"> </span><span class="nc">as</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">CleanedData</span><span class="w"> </span><span class="n">message.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="n">illustrates</span><span class="w"> </span><span class="n">this</span><span class="o">:</span>
+
+<span class="err">```</span><span class="n">proto</span>
 <span class="kd">service</span><span class="w"> </span><span class="n">DataService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Sends CSV content and receives cleaned data.</span>
-<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">CleanData</span><span class="w"> </span><span class="p">(</span><span class="n">DataRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">DataResponse</span><span class="p">);</span>
+<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">CleanData</span><span class="w"> </span><span class="p">(</span><span class="n">Empty</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">CleanedData</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Now that we have written our protofile, we can move on to generating the grpc code.</p>
+<p>The protofile should be saved under the name model.proto, as required by the AI on Demand platform. It is also essential to avoid defining a package within the protofile, as doing so may lead to errors during deployment. With the protofile written and saved, we can now proceed to generate the gRPC code.</p>
 </section>
 <section id="generating-the-grpc-code">
-<h2>Generating the grpc code<a class="headerlink" href="#generating-the-grpc-code" title="Link to this heading">#</a></h2>
-<p>Now we have all the necessary components for the protofile. Next we need to generate the grpc code from the protofile. Make sure you have the grpc tools installed:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>grpcio-tools
+<h2>Generating the gRPC Code<a class="headerlink" href="#generating-the-grpc-code" title="Link to this heading">#</a></h2>
+<p>With the protofile prepared, the next step is to generate the gRPC code. Ensure that the necessary gRPC tools are installed:</p>
+<div class="highlight-proto notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">grpcio</span><span class="o">-</span><span class="n">tools</span>
 </pre></div>
 </div>
-<p>Generating the grpc code can be done in the folder containing the protofile with the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>grpc_tools.protoc<span class="w"> </span>-I./<span class="w"> </span>--python_out<span class="o">=</span>.<span class="w"> </span>--grpc_python_out<span class="o">=</span>.<span class="w"> </span>data.proto
+<p>You can generate the gRPC code from the protofile using the following command, executed in the directory containing the protofile:</p>
+<div class="highlight-proto notranslate"><div class="highlight"><pre><span></span><span class="n">python</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">grpc_tools.protoc</span><span class="w"> </span><span class="o">-</span><span class="n">I.</span><span class="o">/</span><span class="w"> </span><span class="o">--</span><span class="na">python_out</span><span class="o">=.</span><span class="w"> </span><span class="o">--</span><span class="na">grpc_python_out</span><span class="o">=.</span><span class="w"> </span><span class="n">model.proto</span>
 </pre></div>
 </div>
-<p>This should generate two files with code that you can use for defining the server and the client. The files should have the suffixes _pb2.py and _pb2_grpc.py. The first file contains message classes for the messages you defined in the protofile. There are two messageclasses, as we have two messages, and those can be accessed with data_pb2.DataRequest and data_pb2.DataResponse. The second file contains the necessary code for creating the client and the server for the microservice, which is the next step.</p>
+<p>This command will generate two files: model_pb2.py and model_pb2_grpc.py. The first file contains the message classes defined in the protofile, such as Empty and CleanedData, accessible via model_pb2.Empty and model_pb2.CleanedData. The second file contains the necessary code for creating the client and server for the microservice, which we will address in the next step.</p>
 </section>
 <section id="creating-the-server">
-<h2>Creating the server<a class="headerlink" href="#creating-the-server" title="Link to this heading">#</a></h2>
-<p>Let’s first create the server for the microservice. For this you are going to want to utilize some of the code from the generated grpc files. In the file ending with _pb2_grpc.py you should find class definitions for both a servicer and a service, which you are going to need when creating the server.</p>
-<p>The Servicer is an abstract class that you implement to handle the server-side logic of your gRPC service. This is where you define how each RPC method should behave by writing the actual business logic for the methods described in your .proto file. You need to create a subclass of the generated DataServiceServicer and implement the RPC methods defined in the .proto file. The Service class is used internally by gRPC to provide methods to interact with the RPCs. It’s auto-generated by protoc and typically includes static methods for the client to call RPCs and functions to add handlers to the server. The Service is not typically modified directly.</p>
-<p>To implement the server you should follow these steps:</p>
+<h2>Creating the Server<a class="headerlink" href="#creating-the-server" title="Link to this heading">#</a></h2>
+<p>Next, we will create the server for the component, leveraging the code generated in the gRPC files. The model_pb2_grpc.py file includes class definitions for both a servicer and a service, which are essential for server creation.</p>
+<p>The servicer is an abstract class that you implement to handle the server-side logic of your gRPC service. This is where you define the behavior of each RPC method by implementing the business logic described in your .proto file. To implement the server:</p>
 <ol class="arabic simple">
 <li><p>Implement the Servicer: Create a subclass of the generated DataServiceServicer and implement the methods.</p></li>
-<li><p>Start the Server: Use the add_DataServiceServicer_to_server function to attach your servicer to the server and start it.</p></li>
+<li><p>Start the Server: Use the
+add_DataServiceServicer_to_server function to attach your servicer to the server and start it.</p></li>
 </ol>
-<p>Since we already wrote the function clean_data in the service file, all you have to do is import it and possibly add some error handling to implement the RPC function CleanData. You will also need to extract the variables from the grpc request, so in this case the csv file. Since the file is sent as binary we also need to decode it. Additionally, you will need to make sure that the return type of the RPC method follows the definition in the protofile. We defined the DataResponse as six lists, x_train, x_test, y_train, y_test, dates_train and dates_test, so you need to make sure that the returned DataResponse follows this definiton. Here is an example of how to create the subclass for the servicer:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># data_service_server.py</span>
-<span class="c1"># data_service_server.py</span>
-
-<span class="kn">from</span> <span class="nn">concurrent</span> <span class="kn">import</span> <span class="n">futures</span>
+<p>Since the clean_data function has already been implemented in the service file, your task is to import it and, if necessary, add error handling to implement the CleanData RPC function. For simplicity, we will assume that the CSV file is located in the server’s directory and will access it directly. Additionally, ensure that the return type of the RPC method matches the definition in the protofile. Specifically, the CleanedData message, which is returned by the CleanData RPC, must conform to the structure defined earlier. Below is an example of how to create the subclass for the servicer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">concurrent</span> <span class="kn">import</span> <span class="n">futures</span>
 <span class="kn">import</span> <span class="nn">grpc</span>
-<span class="kn">import</span> <span class="nn">data_pb2_grpc</span>
-<span class="kn">import</span> <span class="nn">data_pb2</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">model_pb2_grpc</span>
+<span class="kn">import</span> <span class="nn">model_pb2</span>
 <span class="kn">from</span> <span class="nn">data_service</span> <span class="kn">import</span> <span class="n">clean_data</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 
-<span class="k">class</span> <span class="nc">DataServiceServicer</span><span class="p">(</span><span class="n">data_pb2_grpc</span><span class="o">.</span><span class="n">DataServiceServicer</span><span class="p">):</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;[</span><span class="si">%(asctime)s</span><span class="s1">] </span><span class="si">%(levelname)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">handlers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>  <span class="c1"># Output to the console</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DataServiceServicer</span><span class="p">(</span><span class="n">model_pb2_grpc</span><span class="o">.</span><span class="n">DataServiceServicer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_filepath</span> <span class="o">=</span> <span class="s1">&#39;uploaded_file.csv&#39;</span>
+
     <span class="k">def</span> <span class="nf">CleanData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Cleaning data...&quot;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="c1"># Read CSV content from the request</span>
-            <span class="n">csv_content</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">csv_content</span>
-            <span class="c1"># Decode the csv file </span>
-            <span class="n">csv_file</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">csv_content</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_filepath</span><span class="p">):</span>
+                <span class="n">context</span><span class="o">.</span><span class="n">set_code</span><span class="p">(</span><span class="n">grpc</span><span class="o">.</span><span class="n">StatusCode</span><span class="o">.</span><span class="n">NOT_FOUND</span><span class="p">)</span>
+                <span class="n">context</span><span class="o">.</span><span class="n">set_details</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset file not found&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">model_pb2</span><span class="o">.</span><span class="n">CleanedData</span><span class="p">()</span>
             
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Received CSV data, cleaning...&quot;</span><span class="p">)</span>
+            <span class="c1"># Clean data</span>
+            <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dates_train</span><span class="p">,</span> <span class="n">dates_test</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_filepath</span><span class="p">)</span>
 
-            <span class="c1"># Clean data using the function we defined previously</span>
-            <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dates_train</span><span class="p">,</span> <span class="n">dates_test</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Data cleaned successfully&quot;</span><span class="p">)</span>
-
-            <span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dates_train</span><span class="p">,</span> <span class="n">dates_test</span><span class="p">)</span>
-
-            <span class="c1"># Ensure the returned DataResponse follows the definition in the protofile</span>
-            <span class="k">return</span> <span class="n">data_pb2</span><span class="o">.</span><span class="n">DataResponse</span><span class="p">(</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;x_train and y_train have different lengths&quot;</span><span class="p">)</span>
+            
+            <span class="n">response</span> <span class="o">=</span> <span class="n">model_pb2</span><span class="o">.</span><span class="n">CleanedData</span><span class="p">(</span>
                 <span class="n">x_train</span><span class="o">=</span><span class="n">x_train</span><span class="p">,</span>
-                <span class="n">x_test</span><span class="o">=</span><span class="n">x_test</span><span class="p">,</span>
                 <span class="n">y_train</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span>
+                <span class="n">x_test</span><span class="o">=</span><span class="n">x_test</span><span class="p">,</span>
                 <span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span>
                 <span class="n">dates_train</span><span class="o">=</span><span class="n">dates_train</span><span class="p">,</span>
                 <span class="n">dates_test</span><span class="o">=</span><span class="n">dates_test</span>
             <span class="p">)</span>
-
+            
+            <span class="c1"># Return cleaned data along with the result of training</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Data cleaned successfully.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">response</span>
+        
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Error cleaning data&quot;</span><span class="p">)</span>
             <span class="n">context</span><span class="o">.</span><span class="n">set_code</span><span class="p">(</span><span class="n">grpc</span><span class="o">.</span><span class="n">StatusCode</span><span class="o">.</span><span class="n">INTERNAL</span><span class="p">)</span>
             <span class="n">context</span><span class="o">.</span><span class="n">set_details</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Internal error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">data_pb2</span><span class="o">.</span><span class="n">DataResponse</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">model_pb2</span><span class="o">.</span><span class="n">CleanedData</span><span class="p">()</span>
 
 </pre></div>
 </div>
-<p>Here you can see that the code does essentially the same things as the code for the data app, at the route /get_clean_data. We first read the csv content and save it to a csv file. The file can then be passed to the clean_data function that we wrote earlier. Only difference here is the way we receive and return the data. For the grpc server, we make sure to save the values in the correct return format, data_pb2.DataResponse.</p>
-<p>Now we need to complete the second step for creating the server, start the server. For this we can use the generated function add_DataServiceServer. In order to do this we need to first create a grpc server, that can be done using the following line:</p>
+<p>The function first verifies the availability of the dataset and subsequently utilizes it to invoke the previously defined clean_data function. Upon execution, the function returns the necessary values by the CleanedData message type specified in the protofile. Additionally, logging has been incorporated to facilitate debugging during testing.</p>
+<p>The next step in server setup is to initiate it. This involves using the generated add_DataServiceServicer_to_server function. Begin by creating a gRPC server with the following line of code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">server</span> <span class="o">=</span> <span class="n">grpc</span><span class="o">.</span><span class="n">server</span><span class="p">(</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>futures.ThreadPoolExecutor(max_workers=10) specifies the thread pool executor for handling concurrent RPCs. ThreadPoolExecutor manages a pool of threads for executing tasks asynchronously. Here, it allows the server to handle up to 10 concurrent requests (RPC calls) in parallel.</p>
-<p>Now that we have a server, we can add the servicer to it using the following:</p>
+<p>Here, futures.ThreadPoolExecutor(max_workers=10) configures a thread pool executor to manage concurrent RPCs. This setup allows the server to handle up to 10 concurrent requests (RPC calls) in parallel by managing a pool of threads for asynchronous task execution.</p>
+<p>Once the server is created, add the servicer with the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_pb2_grpc</span><span class="o">.</span><span class="n">add_DataServiceServicer_to_server</span><span class="p">(</span><span class="n">DataServiceServicer</span><span class="p">(),</span> <span class="n">server</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Lastly we need to define a port, start the server and make sure it stays running. This can be done like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">server</span><span class="o">.</span><span class="n">add_insecure_port</span><span class="p">(</span><span class="s1">&#39;[::]:8080&#39;</span><span class="p">)</span>
+<p>Finally, define a port, start the server, and ensure its continuous operation. The AI on Demand platform mandates that servers operate on port 8061. This configuration is achieved with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">server</span><span class="o">.</span><span class="n">add_insecure_port</span><span class="p">(</span><span class="s1">&#39;[::]:8061&#39;</span><span class="p">)</span>
 <span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="n">server</span><span class="o">.</span><span class="n">wait_for_termination</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Now you have all the necessary components for your server. You can take a look at the data_service_server file to see the final code for the server. This file can be found in the directory “4. communication using grpc and protobuffers\example\data\data_service_server.py” in the github repository.</p>
+<p>You now possess all the essential components for your server. For the complete server code, refer to the data_service_server.py file located in the directory 4. Communication using gRPC and Protocol Buffers\example\data in the GitHub repository.</p>
 </section>
-<section id="creating-the-client">
-<h2>Creating the client<a class="headerlink" href="#creating-the-client" title="Link to this heading">#</a></h2>
-<p>Lastly we need to create a client in order to interact with our server. Creating a gRPC client involves setting up a communication channel, creating a stub to interact with the server, making a request, and handling the response. You are going to want to use the stub that was generated from the protofile. The stub acts as an intermediary between your application code and the remote gRPC service. The stub provides methods that correspond to the RPCs defined in the .proto file, allowing your application to invoke these methods as if they were local functions, even though they are executed on a remote server.</p>
-<p>We have two options when creating the client. We can either create the client as a command line client or a web application client. We have decided to define the client for the data component as a command line client, because once we have defined the grpc servers for all the components, we will need a combined client for all three. This client will be created as a web application client. Therefor the data client will only be used for testing the data server and does not necessarily need a web interface.</p>
-<p>To create the command line client, first we are going to create a channel, a communication path, to the server. You need to specify the server’s address (in this case, localhost:8080) in order to create the channel. This can be done like so:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="s1">&#39;localhost:50051&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">channel</span><span class="p">:</span>
+<section id="creating-the-client-for-testing">
+<h2>Creating the Client for Testing<a class="headerlink" href="#creating-the-client-for-testing" title="Link to this heading">#</a></h2>
+<p>While creating a client is not strictly necessary for deployment, it is highly recommended to test the server to ensure proper functionality.</p>
+<p>Creating a gRPC client involves establishing a communication channel, creating a stub to interact with the server, making a request, and handling the response. The stub, generated from the protofile, serves as an intermediary between the client and server. It provides methods corresponding to the RPCs defined in the .proto file, enabling the client to invoke these methods as if they were local functions, despite being executed on a remote server.</p>
+<p>To set up the client:</p>
+<ol class="arabic">
+<li><p><strong>Create a Channel</strong>: Establish a communication path to the server by specifying its address (localhost:8061 in this instance):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="s1">&#39;localhost:8061&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">channel</span><span class="p">:</span>
 </pre></div>
 </div>
-<p>The with statement ensures the channel is properly closed when the operation is done.</p>
-<p>Next we will define the stub using the channel:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stub</span> <span class="o">=</span> <span class="n">data_pb2_grpc</span><span class="o">.</span><span class="n">DataServiceStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+<p>The with statement ensures that the channel is properly closed upon completion of the operation.</p>
+</li>
+<li><p><strong>Define the Stub</strong>: Use the channel to instantiate a stub:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stub</span> <span class="o">=</span> <span class="n">model_pb2_grpc</span><span class="o">.</span><span class="n">DataServiceStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now let’s read and prepare the data for the request. Reading the file as bytes prepares the data to be sent in the DataRequest as defined in the protofile. This is how the reading can be done:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">csv_file_path</span> <span class="o">=</span> <span class="s1">&#39;./MSFT.US.csv&#39;</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">csv_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</li>
+<li><p><strong>Send a Request</strong>: Define an empty message and invoke the CleanData method using the stub:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">empty_message</span> <span class="o">=</span> <span class="n">model_pb2</span><span class="o">.</span><span class="n">Empty</span><span class="p">()</span>
+            
+<span class="c1"># Call the CleanData method</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">stub</span><span class="o">.</span><span class="n">CleanData</span><span class="p">(</span><span class="n">empty_message</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Next we need to construct a request message using the data read in the previous step. The request message format is defined in the .proto file.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="n">data_pb2</span><span class="o">.</span><span class="n">DataRequest</span><span class="p">(</span><span class="n">csv_content</span><span class="o">=</span><span class="n">csv_content</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now we can invoke the remote method on the stub. This sends the request to the server and waits for a response.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">stub</span><span class="o">.</span><span class="n">CleanData</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Now we can check the server’s response and process it as needed. This could involve printing the response data or using it in further computations.</p>
+</li>
+<li><p><strong>Process the Response</strong>: Evaluate the server’s response and handle it as needed. This may involve printing the response data or using it for further computations. To test the next component, save the results as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">x_train</span> <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">x_test</span> <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">y_train</span> <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">y_test</span> <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">dates_train</span> <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">dates_test</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x_trian:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">x_train</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x_test:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">x_test</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_train:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">y_train</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_test:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">y_test</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dates Train:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">dates_train</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dates Test:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">dates_test</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No data returned or some fields are empty.&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x_trian:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">x_train</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x_test:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">x_test</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_train:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">y_train</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_test:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">y_test</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dates Train:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">dates_train</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dates Test:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">dates_test</span><span class="p">)</span>
+
+                <span class="c1"># save the data to a file for later usage</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cleaned_data.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Cleaned data saved to cleaned_data.pkl.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>These are all the necessary parts of the client. You can see the entire client file (data_client.py) in the same folder as the data server.</p>
-</section>
-<section id="testing">
-<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
-<p>Now that you have all the necessary files, you can test the data server and client. You can run the server with the command python3 data_service_server.py and the same goes for the client. You should see the cleaned data being printed on the client side. If you want to ensure that the components you have created are robust and have fool proof error handling, you can develop unit tests on the client side.</p>
-<p>Now you could continue by creating the other services in the same way:</p>
-<ol class="arabic simple">
-<li><p>define the service</p></li>
-<li><p>write protofile</p></li>
-<li><p>generate grpc code</p></li>
-<li><p>create server and client</p></li>
+</li>
 </ol>
-<p>To test the services individually, write individual client files. If you want to test them together, you can create a common client file which uses the stubs of all the different services to communicate. We have already implemented the grpc code for the training and testing, and included all the clients into one file called <a class="reference external" href="http://client.py">client.py</a>. This client is a command line client, which can be used for quick testing of the connection of the different component. However, in order to better interact with the components, it would be advantageous to have a web application from which you could access the different grpc server. Next, we will cover how to create such a client.</p>
+<p>These steps complete the client setup. For the full client code, refer to the data_client.py file in the same directory as the data server. To test the server, execute python data_service_server.py in one terminal and python data_client.py in another. The cleaned data should be printed, and a new .pkl file containing the results will be generated in the same directory as the server and client.</p>
 </section>
-<section id="creating-a-common-web-application-client">
-<h2>Creating a common web application client<a class="headerlink" href="#creating-a-common-web-application-client" title="Link to this heading">#</a></h2>
-<p>When creating the web application client, you can reuse quite alot of the code we wrote for the CLI client, as the webapplication will go through the same processes, like creating the channels and the stubs and making grpc requests to the servers. The main difference is that you will need to implement some sort of logic for how to make the requests, as well as a way to visualize the results.</p>
-<p>For our web application, we have used python and Flask to simplify the necessary tools you need to learn, but you can ofcourse use any language and package you feel the most comfortable with. The benefit of using grpc, is that the client and the servers can all be written in different programming languages, but the communication will still work the same thanks to grpc and protobuffers.</p>
-<p>Let’s start by looking at how to write the <a class="reference external" href="http://app.py">app.py</a> file containing the logic of the app. This will be quite similar to the way we wrote the apps in the last chapter for the different components. We need to define different routes for the different functions we want to call. We have created three ruotes in addition to the main route. Each route corresponds to one step of the pipeline, so for example we have one route called “/clean_data” where we oc course make the grpc request to the data server.</p>
-<p>For future reasons, we have decided that the user shall upload the csv file they want to use for the training. This way the user can test the pipeline on different csv files. Since we added this functionality, we also need to add some error handling in the case of incorrect files being uploaded. We need to check that the file uloaded is a csv file and that it contains the necessary columns for the data cleaning service.</p>
-<p>To validate the uploaded file we have created the following helper functions:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to check if a file is a CSV</span>
-<span class="k">def</span> <span class="nf">is_csv_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">filename</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># Function to validate the CSV format</span>
-<span class="k">def</span> <span class="nf">validate_csv</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-        <span class="n">required_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Close&#39;</span><span class="p">]</span>
-        <span class="n">missing_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">required_columns</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
-        
-        <span class="k">if</span> <span class="n">missing_columns</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Missing columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-        
-        <span class="c1"># Check if there is enough data</span>
-        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;Not enough data for training. The CSV file must contain at least 2 rows.&quot;</span>
-
-        <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">except</span> <span class="n">pd</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">EmptyDataError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;The CSV file is empty.&quot;</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;An error occurred during validation: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-
-</pre></div>
-</div>
-<p>Next we have defined the clean_data route and the corresponding function. The function first uses the helper functions to validate the uploaded file. Once the file has been validated, it uses makes a grpc request to the data server using the stub and lastly returns the values as json. Below you can see the code for the clean_data route:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/clean_data&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">clean_data</span><span class="p">():</span>
-    <span class="k">if</span> <span class="s1">&#39;csv_file&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;No file part in the request&#39;</span><span class="p">}),</span> <span class="mi">400</span>
-
-    <span class="n">file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;csv_file&#39;</span><span class="p">]</span>
-    
-    <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">filename</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;No selected file&#39;</span><span class="p">}),</span> <span class="mi">400</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_csv_file</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">filename</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Invalid file format. Only CSV files are allowed.&#39;</span><span class="p">}),</span> <span class="mi">400</span>
-
-    <span class="c1"># Validate the CSV file format</span>
-    <span class="n">validation_error</span> <span class="o">=</span> <span class="n">validate_csv</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">validation_error</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">validation_error</span><span class="p">}),</span> <span class="mi">400</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># Read file content for gRPC request</span>
-        <span class="n">file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Reset file pointer to start</span>
-        <span class="n">csv_content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        
-        <span class="c1"># Use gRPC to clean the data</span>
-        <span class="k">with</span> <span class="n">grpc</span><span class="o">.</span><span class="n">insecure_channel</span><span class="p">(</span><span class="s1">&#39;localhost:8080&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">channel</span><span class="p">:</span>
-            <span class="n">stub</span> <span class="o">=</span> <span class="n">data_pb2_grpc</span><span class="o">.</span><span class="n">DataServiceStub</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
-            <span class="n">request_data</span> <span class="o">=</span> <span class="n">data_pb2</span><span class="o">.</span><span class="n">DataRequest</span><span class="p">(</span><span class="n">csv_content</span><span class="o">=</span><span class="n">csv_content</span><span class="p">)</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="n">stub</span><span class="o">.</span><span class="n">CleanData</span><span class="p">(</span><span class="n">request_data</span><span class="p">)</span>
-            
-            <span class="c1"># Prepare cleaned data for response</span>
-            <span class="n">cleaned_data</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;x_train&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">x_train</span><span class="p">),</span>
-                <span class="s1">&#39;x_test&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">x_test</span><span class="p">),</span>
-                <span class="s1">&#39;y_train&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">y_train</span><span class="p">),</span>
-                <span class="s1">&#39;y_test&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">y_test</span><span class="p">),</span>
-                <span class="s1">&#39;dates_train&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">dates_train</span><span class="p">),</span>
-                <span class="s1">&#39;dates_test&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">dates_test</span><span class="p">)</span>
-            <span class="p">}</span>
-            
-            <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">cleaned_data</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">grpc</span><span class="o">.</span><span class="n">RpcError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;RPC failed: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="p">()</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">details</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}),</span> <span class="mi">500</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;An error occurred: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}),</span> <span class="mi">500</span>
-
-</pre></div>
-</div>
-<p>Once the csv file has been validated you can see that the process is quite similar to that of the CLI client. This also holds true for the testing and the training. We define routes for the testing and training separatly, and then we simply retreive the necessary values from the request, and use the stub to call the relevant function. If you take a look at the <a class="reference external" href="http://app.py">app.py</a> file in the “4. communication using grpc and protobuffers\example\client” directory, you can see how the entire app has been implemented. We have also created an index.html file which specifies how the ui should look. This file can be found in the templates folder. If you run the app you can test out the UI and the pipeline. You should see the plot of the testing as output.</p>
+<section id="defining-additional-servers">
+<h2>Defining Additional Servers<a class="headerlink" href="#defining-additional-servers" title="Link to this heading">#</a></h2>
+<p>You may proceed by similarly creating the other servers:</p>
+<ol class="arabic simple">
+<li><p>Define the service</p></li>
+<li><p>Write the protofile</p></li>
+<li><p>Generate gRPC code</p></li>
+<li><p>Create the server</p></li>
+<li><p>Create and test the client</p></li>
+</ol>
+<p>The gRPC code for training and testing, including all corresponding clients, has already been implemented and can be found in the directory C:\Users\Lotta\Documents\Arcada\TAIS-educational-material-public\4. communication using grpc and protobuffers\example.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>You are now acquainted with the process of creating a gRPC server and testing it using a client. The next phase involves developing web applications for the data and testing components to enable users to upload a CSV file and view the test results. To fully grasp the forthcoming chapter, ensure you review the code from this chapter, particularly the testing server, as it will be central to the next phase.</p>
 </section>
 </section>
 
@@ -746,15 +645,6 @@ document.write(`
         <p class="prev-next-title">gRPC and Protocol Buffers</p>
       </div>
     </a>
-    <a class="right-next"
-       href="../5.%20containerization%20using%20docker/5.1.%20containerization%20and%20Docker.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Containerization</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -771,12 +661,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-protofile">Creating the protofile</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-the-grpc-code">Generating the grpc code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-server">Creating the server</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-client">Creating the client</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-common-web-application-client">Creating a common web application client</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-protofile">Creating the Protofile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-the-grpc-code">Generating the gRPC Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-server">Creating the Server</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-client-for-testing">Creating the Client for Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-additional-servers">Defining Additional Servers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 
