@@ -4,7 +4,7 @@ import os
 
 # Load the Jupyter Notebook JSON file
 
-notebook_path = r'creating-ML-pipeline-components\2. Beginning of creating a pipeline\2.1 first steps to creating a pipeline.ipynb'
+notebook_path = r'creating-ML-pipeline-components\7. deployment\7.2 Uploading to the AI on Demand platform.ipynb'
 
 with open(notebook_path, 'r', encoding='utf-8') as f:
     notebook_json = json.load(f)
