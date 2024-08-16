@@ -40,8 +40,7 @@ parts:
       - file: "7. deployment/7.1. Introduction to Kubernetes.ipynb"
       - file: "7. deployment/7.2. Uploading to the AI on Demand website.ipynb"
       - file: "7. deployment/7.3. Deployment using the AI on Demand website.ipynb"
-      - file: "6. deployment/Deployment using the playgroundapp.ipynb"
-  - caption: "7. Conclusion"
+  - caption: "8. Conclusion"
     chapters:
       - file: Conclusion.ipynb
 
